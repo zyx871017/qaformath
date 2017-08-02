@@ -1,0 +1,43 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/orders/orders",
+    "pages/category/category",
+    "pages/myself/myself"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "手机壳销售",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar":{
+    "list":[{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "pages/common/index.png",
+      "selectedIconPath": "pages/common/indexActive.png"
+    },{
+      "pagePath": "pages/category/category",
+      "text": "分类",
+      "iconPath": "pages/common/category.png",
+      "selectedIconPath": "pages/common/categoryActive.png"
+    },{
+      "pagePath": "pages/orders/orders",
+      "text": "订单",
+      "iconPath": "pages/common/orders.png",
+      "selectedIconPath": "pages/common/ordersActive.png"
+    },{
+      "pagePath": "pages/myself/myself",
+      "text": "我",
+      "iconPath": "pages/common/myself.png",
+      "selectedIconPath": "pages/common/myselfActive.png"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}
