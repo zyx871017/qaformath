@@ -1,13 +1,3 @@
-<!--index.wxml-->
-<!-- <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view> -->
 <scroll-view>
   <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" >
     <block wx:for="{{swiperUrl}}">
@@ -22,4 +12,13 @@
       <text class="productText">产品{{item}}</text>
     </view>
   </view>
+  <view class="hotBlank">热卖产品</view>
+  <view class="arrow"></view>
+  <scroll-view class="hotProductsBlock" scroll-y="{{true}}">
+    <view class="hotProductsItem" wx:for="{{hotProducts}}">
+      <image src="{{item.url}}"></image>
+      <text>{{item.name}}</text>
+      <text>{{item.price}}</text>
+    </view>
+  </scroll-view>
 </scroll-view>
