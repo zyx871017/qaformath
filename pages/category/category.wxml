@@ -1,0 +1,17 @@
+<view class="categoryContent">
+  <view class="categoryList">
+    <view class="categoryListItem" wx:for="{{categoryList}}" wx:key="*this" style="color:{{item==categoryActive?'red':'black'}}"
+    bindtap="categoryTap" data-category="{{item}}">
+      <view class="activeBar" style="background-color:{{item==categoryActive?'red':'white'}}"></view>
+      <text>{{item}}</text>
+    </view>
+  </view>
+  <scroll-view class="categoryDetail" scroll-y="{{true}}">
+    <image class="categoryImg" src="{{categoryImg}}"></image>
+    <text class="categoryName">{{categoryActive}}</text>
+    <view class="secCategoryItem" wx:for="{{secCategoryList}}" wx:key="*this">
+      <image class="secCategoryImg" src="{{item.secCategoryImg}}"></image>
+      <text class="secCategoryName">{{item.secCategoryName}}</text>
+    </view>
+  </scroll-view>
+</view>

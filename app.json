@@ -1,7 +1,6 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs",
     "pages/orders/orders",
     "pages/category/category",
     "pages/myself/myself"

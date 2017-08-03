@@ -1,6 +1,6 @@
 <scroll-view>
   <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" >
-    <block wx:for="{{swiperUrl}}">
+    <block wx:for="{{swiperUrl}}" wx:key="*this">
       <swiper-item>
         <image class="bannerImg" src="{{item}}" background-size="cover" mode="scaleToFill"></image>
       </swiper-item>
@@ -12,13 +12,16 @@
       <text class="productText">产品{{item}}</text>
     </view>
   </view>
-  <view class="hotBlank">热卖产品</view>
-  <view class="arrow"></view>
-  <scroll-view class="hotProductsBlock" scroll-y="{{true}}">
-    <view class="hotProductsItem" wx:for="{{hotProducts}}">
-      <image src="{{item.url}}"></image>
-      <text>{{item.name}}</text>
-      <text>{{item.price}}</text>
+  <view class="hotBlank">热卖产品
+    <view class="arrow"></view>
+  </view>
+  <scroll-view class="hotProductsScroll" scroll-x="{{true}}" scroll-y="{{false}}">
+    <view class="hotProductsBlock">
+      <view class="hotProductsItem" wx:for="{{hotProducts}}" wx:key="*this">
+        <image class="hotProductsImg" src="{{item.url}}"></image>
+        <text class="hotProductsName">{{item.name}}</text>
+        <text class="hotProductsPrice">{{item.price}}</text>
+      </view>
     </view>
   </scroll-view>
 </scroll-view>
