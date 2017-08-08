@@ -1,11 +1,11 @@
 <view class="categoryContent">
-  <view class="categoryList">
+  <scroll-view class="categoryList">
     <view class="categoryListItem" wx:for="{{categoryList}}" wx:key="*this" style="color:{{item==categoryActive?'red':'black'}}"
     bindtap="categoryTap" data-category="{{item}}">
       <view class="activeBar" style="background-color:{{item==categoryActive?'red':'white'}}"></view>
       <text>{{item}}</text>
     </view>
-  </view>
+  </scroll-view>
   <scroll-view class="categoryDetail" scroll-y="{{true}}">
     <image class="categoryImg" src="{{categoryImg}}"></image>
     <text class="categoryName">{{categoryActive}}</text>

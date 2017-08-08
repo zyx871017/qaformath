@@ -1,30 +1,44 @@
 Page({
   data: {
-    categoryList: ['iPhone', '安卓', 'vivo', 'oppo', '锤子', '小米', '华为'],
-    categoryImg: '../common/movib1.jpg',
-    secCategoryList: [
+    ordersTab: ['全部', '代付款', '待收货', '已完成', '已取消'],
+    activeTab: '全部',
+    order: [],
+    orders: [
       {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone7'
+        imgUrl: '../common/productImg.jpg',
+        name: 'iPhone7',
+        price: 134.20
       }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone6S'
+        imgUrl: '../common/productImg.jpg',
+        name: 'iPhone7',
+        price: 134.20
       }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone5'
+        imgUrl: '../common/productImg.jpg',
+        name: 'iPhone7',
+        price: 134.20
       }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone5S'
+        imgUrl: '../common/productImg.jpg',
+        name: 'iPhone7',
+        price: 134.20
       }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone4'
+        imgUrl: '../common/productImg.jpg',
+        name: 'iPhone7',
+        price: 134.20
       }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone4S'
+        imgUrl: '../common/productImg.jpg',
+        name: 'iPhone7',
+        price: 134.20
       }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone6 Plus'
+        imgUrl: '../common/productImg.jpg',
+        name: 'iPhone7',
+        price: 134.20
       }
     ]
   },
+  ordersTap: function(e){
+    this.setData({ 
+      activeTab: e.currentTarget.dataset.tab,
+      order: e.currentTarget.dataset.tab == '全部' ? this.data.orders : [] 
+    });
+  }
 })

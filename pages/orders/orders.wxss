@@ -1,0 +1,100 @@
+.ordersContent {
+  background-color: #eff3f6;
+  width: 100%;
+  height: 100%;
+  padding-top: 91rpx;
+  box-sizing: border-box;
+  z-index: 9;
+}
+
+.ordersTab {
+  width: 100%;
+  height: 87rpx;
+  background-color: #fff;
+  top: 2rpx;
+  position: fixed;
+  display: flex;
+  z-index: 99;
+}
+
+.ordersText {
+  flex: 1;
+  font-size: 29rpx;
+  line-height: 87rpx;
+  display: block;
+  text-align: center;
+  height:87rpx;
+  float: left;
+  box-sizing: border-box;
+}
+
+.orders {
+  background-color: #eff3f6;
+  margin-top: 20rpx;
+  height: 435rpx;
+}
+
+.ordersTitleBar{
+  background-color: #fff;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 82rpx;
+  padding-left: 20rpx;
+  display: block;
+}
+
+.ordersImageList {
+  background-color: #f8f8f8;
+  height: 186rpx;
+  width: 100%;
+}
+
+.ordersImage {
+  width: 146rpx;
+  height: 146rpx;
+  margin: 20rpx;
+  border-radius: 4rpx;
+}
+
+.ordersPrice {
+  background-color: #fff;
+  height: 82rpx;
+  line-height: 82rpx;
+  font-size: 28rpx;
+  text-align: right;
+  width: 100%;
+  display: block;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.ordersOprate {
+  background-color: #fff;
+  height: 82rpx;
+  margin-top: 2rpx;
+}
+
+.ordersButton {
+  width: 158rpx;
+  height: 58rpx;
+  border: 1rpx solid red;
+  border-radius: 4rpx;
+  float: right;
+  line-height: 58rpx;
+  text-align: center;
+  margin: 11rpx 20rpx;
+  color: red;
+}
+
+.noOrders {
+  width: 100%;
+  position: absolute;
+  top: 4rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  text-align: center;
+  line-height: 400rpx;
+  z-index: 9;
+}

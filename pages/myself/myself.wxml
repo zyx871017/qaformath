@@ -1,27 +1,25 @@
-<scroll-view>
-  <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" >
-    <block wx:for="{{swiperUrl}}" wx:key="*this">
-      <swiper-item>
-        <image class="bannerImg" src="{{item}}" background-size="cover" mode="scaleToFill"></image>
-      </swiper-item>
-    </block>  
-  </swiper>
-  <view class="products">
-    <view class="productItem" wx:for="{{products}}" bindtap="productTap" wx:key="*this" data-product="{{item}}">
-      <image class="productImg" src="./../common/productImg.jpg"  mode="scaleToFill"></image>
-      <text class="productText">产品{{item}}</text>
-    </view>
+<view class="myselfContent">
+  <view class="userInfo">
+    <image class="userImage" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userName">{{userInfo.nickName}}</text>
   </view>
-  <view class="hotBlank">热卖产品
-    <view class="arrow"></view>
+  <view class="operateItem" bindtap="navToMyTickets">
+    <text class="operateText">我的优惠券</text>
+    <image class="navToIcon" src="../common/navTo.png"></image>
   </view>
-  <scroll-view class="hotProductsScroll" scroll-x="{{true}}" scroll-y="{{false}}">
-    <view class="hotProductsBlock">
-      <view class="hotProductsItem" wx:for="{{hotProducts}}" wx:key="*this">
-        <image class="hotProductsImg" src="{{item.url}}"></image>
-        <text class="hotProductsName">{{item.name}}</text>
-        <text class="hotProductsPrice">{{item.price}}</text>
-      </view>
-    </view>
-  </scroll-view>
-</scroll-view>
+  <view class="operateItem" bindtap="navToMyTickets">
+    <text class="operateText">地址管理</text>
+    <image class="navToIcon" src="../common/navTo.png"></image>
+  </view>
+  <view class="operateItem" bindtap="navToMyTickets">
+    <text class="operateText">意见反馈</text>
+    <image class="navToIcon" src="../common/navTo.png"></image>
+  </view>
+  <view class="operateItem" bindtap="navToMyTickets">
+    <text class="operateText">绑定手机号</text>
+    <image class="navToIcon" src="../common/navTo.png"></image>
+  </view>
+  <view class="operateItem" bindtap="navToMyTickets">
+    <text class="operateText">客服电话</text>
+  </view>
+</view>

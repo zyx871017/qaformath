@@ -1,27 +1,19 @@
-<scroll-view>
-  <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" >
-    <block wx:for="{{swiperUrl}}" wx:key="*this">
-      <swiper-item>
-        <image class="bannerImg" src="{{item}}" background-size="cover" mode="scaleToFill"></image>
-      </swiper-item>
-    </block>  
-  </swiper>
-  <view class="products">
-    <view class="productItem" wx:for="{{products}}" bindtap="productTap" wx:key="*this" data-product="{{item}}">
-      <image class="productImg" src="./../common/productImg.jpg"  mode="scaleToFill"></image>
-      <text class="productText">产品{{item}}</text>
+<view class="ordersTab">
+  <text class="ordersText" wx:for="{{ordersTab}}" wx:key="*this" bindtap="ordersTap" 
+  data-tab="{{item}}" style="color:{{activeTab == item ? 'red' : 'black'}}">{{item}}</text>
+</view>
+<scroll-view class="ordersContent" scroll-y="{{true}}">
+  <view class="noOrders" wx:if="{{order.length == 0}}">您还没有相关订单</view>
+  <view class="orders" wx:for="{{order}}" wx:key="name">
+    <view class="ordersTitleBar">
+      <text class="ordersName">{{item.name}}</text>
+    </view>
+    <view class="ordersImageList">
+      <image class="ordersImage" src="{{item.imgUrl}}"></image>
+    </view>
+    <text class="ordersPrice">商品价格：￥{{item.price}}</text>
+    <view class="ordersOprate">
+      <text class="ordersButton">付款</text>
     </view>
   </view>
-  <view class="hotBlank">热卖产品
-    <view class="arrow"></view>
-  </view>
-  <scroll-view class="hotProductsScroll" scroll-x="{{true}}" scroll-y="{{false}}">
-    <view class="hotProductsBlock">
-      <view class="hotProductsItem" wx:for="{{hotProducts}}" wx:key="*this">
-        <image class="hotProductsImg" src="{{item.url}}"></image>
-        <text class="hotProductsName">{{item.name}}</text>
-        <text class="hotProductsPrice">{{item.price}}</text>
-      </view>
-    </view>
-  </scroll-view>
 </scroll-view>
