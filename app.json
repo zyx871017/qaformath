@@ -28,7 +28,7 @@
       },
       {
         "pagePath": "pages/orders/orders",
-        "text": "订单",
+        "text": "购物车",
         "iconPath": "pages/common/orders.png",
         "selectedIconPath": "pages/common/ordersActive.png"
       },

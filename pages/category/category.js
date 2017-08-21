@@ -1,36 +1,36 @@
-var app = getApp()
+var app = getApp();
+var common = require('./../common/config/common.js').common;
 Page({
+  onLoad: function () {
+    var that = this;
+
+    var getCategoriesList = app.getRequest(`${common.apiPrefix}/category/get-categories-list`)
+    .then(function(res){
+      app.getRequest(`${common.apiPrefix}/category/get-category-detail/${res[0].id}`)
+      .then(function(resData){
+        that.setData({
+          categoryList: res,
+          categoryActive: res[0],
+          secCategoryList: resData
+        })
+      })
+    });
+  },
   data: {
-    categoryList:['iPhone','安卓','vivo','oppo','锤子','小米','华为'],
+    categoryList:[],
     categoryImg: '../common/movib1.jpg',
     categoryActive: 'iPhone',
-    secCategoryList:[
-      {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone7'
-      },{
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone6S'
-      }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone5'
-      }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone5S'
-      }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone4'
-      }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone4S'
-      }, {
-        secCategoryImg: '../common/productImg.jpg',
-        secCategoryName: 'iPhone6 Plus'
-      }
-    ]
+    secCategoryList:[]
   },
   categoryTap: function(e) {
-    console.log(e);
-    this.setData({categoryActive: e.currentTarget.dataset.category});
+    var that = this;
+    var cateId = e.currentTarget.dataset.category.id;
+    app.getRequest(`${common.apiPrefix}/category/get-category-detail/${cateId}`)
+    .then(function(res){
+      that.setData({ 
+        categoryActive: e.currentTarget.dataset.category,
+        secCategoryList: res
+        });
+    });
   }
 })
