@@ -8,10 +8,12 @@
       <text class="allSel left">全选</text>
       <text class="mallName right">店铺名称</text>
     </view>
-    <view class="goodsList" wx:for="{{goodsList}}" wx:key="*this">
+    <view class="goodsList" wx:for="{{goodsList}}" wx:key="{{index}}">
       <view class="goodsSelect left">
-        <icon type="success" bindtap="singleSelectTap" data-item="{{item}}" color="red" wx:if="{{allSelect||item.select}}" size="20" />
-        <view class="notChoose" bindtap="singleSelectTap" data-item="{{item}}" wx:if="{{!(allSelect||item.select)}}"></view>
+        <icon type="success" bindtap="singleSelectTap" data-item="{{item}}"
+         color="red" wx:if="{{item.select}}" size="20" data-index="{{index}}" />
+        <view class="notChoose" bindtap="singleSelectTap" data-item="{{item}}"
+         data-index="{{index}}" wx:if="{{!item.select}}"></view>
       </view>
       <image src="../common/productImg.jpg"></image>
       <view class="goodsDetial">
@@ -23,9 +25,11 @@
           </view>
         </view>
         <view class="goodsAction">
-          <text class="goodsMinus">-</text>
+          <text class="goodsMinus" bindtap="countMinus"
+           data-item="{{item}}" data-index="{{index}}">-</text>
           <text class="goodsCount">{{item.goodsCount}}</text>
-          <text class="goodsPlus">+</text>
+          <text class="goodsPlus" bindtap="countPlus"
+           data-item="{{item}}" data-index="{{index}}">+</text>
         </view>
       </view>
     </view>
@@ -39,11 +43,11 @@
   <view class="totalPriceContent right">
     <view class="totalSpent">
       <text class="totalPriceText">合计：</text>
-      <text class="totalPriceNumber">¥53.60</text>
+      <text class="totalPriceNumber">¥ {{totalPrice}}</text>
     </view>
     <view class="salesContent">
       <text class="salesText">已优惠</text>
-      <text class="salesNumber"> ¥ 0.00</text>
+      <text class="salesNumber"> ¥ {{totalDiscount}}</text>
     </view>
   </view>
   

@@ -11,31 +11,117 @@ Page({
       goodsSummary: '产品简介',
       goodsCount: 2,
       select: true,
+      discount: 1.2,
       price: 9.9
     }, {
       goodsSummary: '产品简介',
       goodsCount: 2,
       select: false,
+      discount: 1.2,
       price: 9.9
     }, {
         goodsSummary: '产品简介',
         goodsCount: 2,
         select: true,
+        discount: 1.2,
         price: 9.9
     }, {
       goodsSummary: '产品简介',
       goodsCount: 2,
       select: true,
+      discount: 1.2,
       price: 9.9
-    }]
+    }],
+    totalPrice: 0,
+    totalDiscount: 0
   },
 
-  allSelectTap: function(){
-    this.setData({allSelect: !this.data.allSelect});
+  totalPrice: function(goodsList){
+    let totalPrice = 0;
+    if(goodsList.length == 0){
+      return 0;
+    }
+    for(let i = 0; i < goodsList.length; i ++) {
+      if(goodsList[i].select){
+        totalPrice += goodsList[i].goodsCount * goodsList[i].price;
+      }
+    }
+    console.log(totalPrice);
+    return totalPrice.toFixed(2);
+  },
+
+  totalDiscount: function(goodsList) {
+    let totalDiscount = 0;
+    if (goodsList.length == 0) {
+      return 0;
+    }
+    for (let i = 0; i < goodsList.length; i++) {
+      if (goodsList[i].select) {
+        totalDiscount += goodsList[i].goodsCount * goodsList[i].discount;
+      }
+    }
+    console.log(totalDiscount);
+    return totalDiscount.toFixed(2);
+  },
+
+  allSelectTap: function () {
+    const goodsList = this.data.goodsList;
+    const newSelect = !this.data.allSelect;
+    for (let i = 0; i < goodsList.length; i++) {
+      goodsList[i].select = newSelect;
+    }
+    const totalPrice = this.totalPrice(goodsList);
+    const totalDiscount = this.totalDiscount(goodsList);
+    this.setData({
+      allSelect: newSelect,
+      goodsList,
+      totalPrice,
+      totalDiscount
+    });
   },
 
   singleSelectTap:function(e){
-    console.log(e);
+    const goodsList = this.data.goodsList;
+    goodsList[e.currentTarget.dataset.index].select = !e.currentTarget.dataset.item.select;
+    const totalPrice = this.totalPrice(goodsList);
+    const totalDiscount = this.totalDiscount(goodsList);
+    this.setData({
+      goodsList,
+      allSelect: false,
+      totalPrice,
+      totalDiscount
+    })
+  },
+
+  countMinus: function(e){
+    const goodsCount = e.currentTarget.dataset.item.goodsCount;
+    if(goodsCount == 0) {
+      return;
+    }
+    const listIndex = e.currentTarget.dataset.index;
+    const goodsList = this.data.goodsList;
+    goodsList[listIndex].goodsCount = goodsCount - 1;
+    const totalPrice = this.totalPrice(goodsList);
+    const totalDiscount = this.totalDiscount(goodsList);
+    this.setData({
+      goodsList,
+      totalPrice,
+      totalDiscount
+    });
+  },
+
+  countPlus: function (e) {
+    const goodsCount = e.currentTarget.dataset.item.goodsCount;
+    const listIndex = e.currentTarget.dataset.index;
+    const goodsList = this.data.goodsList;
+    goodsList[listIndex].goodsCount = goodsCount + 1;
+    const totalPrice = this.totalPrice(goodsList);
+    const totalDiscount = this.totalDiscount(goodsList);
+    this.setData({
+      goodsList,
+      totalPrice,
+      totalDiscount
+    });
   },
 
   /**
