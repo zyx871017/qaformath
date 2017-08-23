@@ -4,7 +4,8 @@
     "pages/orders/orders",
     "pages/category/category",
     "pages/myself/myself",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/shoppingCart/shoppingCart"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,6 +14,7 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
+    "selectedColor": "red",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -27,7 +29,7 @@
         "selectedIconPath": "pages/common/categoryActive.png"
       },
       {
-        "pagePath": "pages/orders/orders",
+        "pagePath": "pages/shoppingCart/shoppingCart",
         "text": "购物车",
         "iconPath": "pages/common/orders.png",
         "selectedIconPath": "pages/common/ordersActive.png"

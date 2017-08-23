@@ -1,0 +1,50 @@
+<!--shoppingCart.wxml-->
+<view class="destination">送货地址：。。。</view>
+<scroll-view>
+  <view class="goodsListContent">
+    <view class="allSelectContent">
+      <icon class="left" type="success" bindtap="allSelectTap" color="red" wx:if="{{allSelect}}" size="20" />
+      <view class="notChoose left" bindtap="allSelectTap" wx:if="{{!allSelect}}"></view>
+      <text class="allSel left">全选</text>
+      <text class="mallName right">店铺名称</text>
+    </view>
+    <view class="goodsList" wx:for="{{goodsList}}" wx:key="*this">
+      <view class="goodsSelect left">
+        <icon type="success" bindtap="singleSelectTap" data-item="{{item}}" color="red" wx:if="{{allSelect||item.select}}" size="20" />
+        <view class="notChoose" bindtap="singleSelectTap" data-item="{{item}}" wx:if="{{!(allSelect||item.select)}}"></view>
+      </view>
+      <image src="../common/productImg.jpg"></image>
+      <view class="goodsDetial">
+        <view class="goodsDetailShow">
+          <text class="goodsSummary">{{item.goodsSummary}}</text>
+          <view class="goodsNumber">
+            <text class="goodsPrice">¥ {{item.price}}</text>
+            <text class="goodsOther"></text>
+          </view>
+        </view>
+        <view class="goodsAction">
+          <text class="goodsMinus">-</text>
+          <text class="goodsCount">{{item.goodsCount}}</text>
+          <text class="goodsPlus">+</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="totalContent">
+  <icon type="success" bindtap="allSelectTap" color="red" wx:if="{{allSelect}}" size="20" />
+  <view class="notChoose" bindtap="allSelectTap" wx:if="{{!allSelect}}"></view>
+  <text class="allSelect">全选</text>
+  <view class="payBtn right">结算(3)</view>
+  <view class="totalPriceContent right">
+    <view class="totalSpent">
+      <text class="totalPriceText">合计：</text>
+      <text class="totalPriceNumber">¥53.60</text>
+    </view>
+    <view class="salesContent">
+      <text class="salesText">已优惠</text>
+      <text class="salesNumber"> ¥ 0.00</text>
+    </view>
+  </view>
+  
+</view>

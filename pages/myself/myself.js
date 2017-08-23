@@ -39,36 +39,23 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
         console.log(tempFilePaths);
-        wx.request({
-          url: `${common.apiPrefix}/util/put-ali-oss`,
-          data: {
-            uploads: tempFilePaths[0],
+        wx.uploadFile({
+          url: `${common.apiPrefix}/util/put-ali-oss`, //仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData:{
             random: 'wenxue-valid'
           },
           header: {
-            'content-type': 'multipart/form-data'  
+            'content-type': 'multipart/form-data'
           },
-          method: 'POST',
-          dataType: 'file',
-          success: function(res){
-            console.log(res);
+          success: function (res) {
+            var data = JSON.parse(res.data);
+
+            console.log(data);
+            //do something
           }
         })
-        // wx.uploadFile({
-        //   url: `${common.apiPrefix}/util/put-ali-oss`, //仅为示例，非真实的接口地址
-        //   filePath: tempFilePaths[0],
-
-        //   uploads: tempFilePaths[0],
-        //   name: 'file',
-        //   formData:{
-        //     random: 'wenxue-valid'
-        //   },
-        //   success: function (res) {
-        //     var data = res.data
-        //     console.log(data);
-        //     //do something
-        //   }
-        // })
       }
     })
   },

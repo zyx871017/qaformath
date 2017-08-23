@@ -12,3 +12,11 @@
 page {
   height:100%;
 }
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}

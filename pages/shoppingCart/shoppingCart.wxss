@@ -1,0 +1,199 @@
+/* shoppingCart.wxss */
+page{
+  background-color: #eee;
+}
+
+.destination{
+  height: 70rpx;
+  padding: 20rpx 40rpx;
+  font-size: 23rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+scroll-view{
+  z-index: 1;
+  margin-top: 90rpx;
+}
+
+.allSelectContent{
+  background-color: #fff;
+  height: 106rpx;
+  width: 100%;
+  padding: 30rpx 16rpx;
+  box-sizing: border-box;
+}
+.allSelectContent text{
+  font-size: 26rpx;
+  line-height: 45rpx;
+  margin-left: 10rpx;
+  display: block;
+  width: 150rpx;
+}
+
+.allSelectContent .mallName{
+  text-align: right;
+}
+
+icon{
+  display: block;
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.goodsList{
+  height: 230rpx;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1rpx solid #eee;
+  padding: 19rpx 0rpx;
+  box-sizing: border-box;
+}
+
+.goodsSelect {
+  height: 100%;
+  padding: 78rpx 16rpx;
+  box-sizing: border-box;
+  width: 77rpx;
+}
+
+.goodsList image{
+  width: 192rpx;
+  height: 192rpx;
+  float: left;
+}
+
+.goodsDetial {
+  width: 480rpx;
+  float: left;
+  height: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 26rpx;
+}
+
+.goodsDetailShow{
+  height: 128rpx;
+}
+
+.goodsSummary{
+  width: 372rpx;
+  height: 128rpx;
+  float: left;
+}
+
+.goodsNumber{
+  float: right;
+  color: red;
+}
+
+.goodsAction{
+  width: 189rpx;
+  height: 64rpx;
+  border: 1rpx solid #eee;
+  box-sizing: border-box;
+  float: right;
+  font-size: 22rpx;
+}
+
+.goodsAction text{
+  width: 61rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  display: block;
+  float: left;
+  font-size: 22rpx;
+}
+
+.goodsCount,.goodsMinus{
+  border-right: 1rpx solid #eee;
+}
+
+.totalContent{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 104rpx;
+  border-top: 1rpx solid #eee;
+  background-color: #fff;
+  width: 100%;
+  z-index: 10;
+}
+
+.totalContent icon{
+  display: block;
+  float: left;
+  box-sizing: border-box;
+  padding: 27rpx 16rpx;
+  width: 77rpx;
+  height:100%;
+}
+
+.allSelect{
+  line-height: 103rpx;
+  font-size: 27rpx;
+  float: left;
+}
+
+.payBtn{
+  width: 220rpx;
+  height: 103rpx;
+  text-align: center;
+  line-height: 103rpx;
+  color: #fff;
+  background-color: red;
+  font-size: 32rpx;
+}
+
+.totalPriceText{
+  font-size: 26rpx;
+  text-align: right;
+}
+
+.totalPriceNumber{
+  color: red;
+  font-size: 22rpx;
+}
+
+.totalSpent{
+  text-align: right;
+}
+
+.totalPriceContent{
+  margin-right: 10rpx;
+  margin-top: 12rpx;
+}
+
+.salesContent{
+  font-size: 20rpx;
+  text-align: right;
+  margin-top: 16rpx;
+}
+
+.salesNumber{
+  margin-left: 5rpx;
+}
+
+.notChoose{
+  width: 45rpx;
+  height: 45rpx;
+  display: block;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.totalContent .notChoose{
+  width: 45rpx;
+  height: 45rpx;
+  display: block;
+  background-color: #eee;
+  border-radius: 50%;
+  float: left;
+  margin: 27rpx 16rpx;
+}
