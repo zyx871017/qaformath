@@ -8,8 +8,8 @@
   </swiper>
   <view class="products">
     <view class="productItem" wx:for="{{products}}" bindtap="productTap" wx:key="id" data-product="{{item}}">
-      <image class="productImg" src="{{item.category_image}}"  mode="scaleToFill"></image>
-      <text class="productText">{{item.category}}</text>
+      <image class="productImg" src="{{item.goods_image}}"  mode="scaleToFill"></image>
+      <text class="productText">{{item.category_name}}</text>
     </view>
   </view>
   <view class="hotBlank">热卖产品

@@ -19,6 +19,7 @@ page{
 scroll-view{
   z-index: 1;
   margin-top: 90rpx;
+  margin-bottom: 120rpx;
 }
 
 .allSelectContent{
@@ -102,7 +103,7 @@ icon{
 }
 
 .goodsAction text{
-  width: 61rpx;
+  width: 60rpx;
   height: 60rpx;
   text-align: center;
   line-height: 60rpx;

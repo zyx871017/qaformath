@@ -33,7 +33,8 @@ Page({
       price: 9.9
     }],
     totalPrice: 0,
-    totalDiscount: 0
+    totalDiscount: 0,
+    totalCount: 0
   },
 
   totalPrice: function(goodsList){
@@ -46,7 +47,6 @@ Page({
         totalPrice += goodsList[i].goodsCount * goodsList[i].price;
       }
     }
-    console.log(totalPrice);
     return totalPrice.toFixed(2);
   },
 
@@ -60,8 +60,20 @@ Page({
         totalDiscount += goodsList[i].goodsCount * goodsList[i].discount;
       }
     }
-    console.log(totalDiscount);
     return totalDiscount.toFixed(2);
+  },
+
+  totalCount: function(goodsList){
+    let totalCount = 0;
+    if(goodsList.length == 0){
+      return 0;
+    }
+    for(let i = 0; i < goodsList.length; i++) {
+      if(goodsList[i].select) {
+        totalCount ++;
+      }
+    }
+    return totalCount;
   },
 
   allSelectTap: function () {
@@ -72,11 +84,13 @@ Page({
     }
     const totalPrice = this.totalPrice(goodsList);
     const totalDiscount = this.totalDiscount(goodsList);
+    const totalCount = this.totalCount(goodsList);
     this.setData({
       allSelect: newSelect,
       goodsList,
       totalPrice,
-      totalDiscount
+      totalDiscount,
+      totalCount
     });
   },
 
@@ -85,11 +99,13 @@ Page({
     goodsList[e.currentTarget.dataset.index].select = !e.currentTarget.dataset.item.select;
     const totalPrice = this.totalPrice(goodsList);
     const totalDiscount = this.totalDiscount(goodsList);
+    const totalCount = this.totalCount(goodsList);
     this.setData({
       goodsList,
       allSelect: false,
       totalPrice,
-      totalDiscount
+      totalDiscount,
+      totalCount
     })
   },
 

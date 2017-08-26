@@ -1,2 +1,54 @@
-<!--detail.wxml-->
-<text>detail.wxml</text>
+<view class="actionContent">
+  <view class="connect">
+    <image src="../common/orders.png"></image>
+    <text>购物车</text>
+  </view>
+  <view class="connect">
+    <image src="../common/index.png"></image>
+    <text>首页</text>
+  </view>
+  <view class="follow">
+    <image src="../common/orders.png"></image>
+    <text>收藏</text>
+  </view>
+  <text class="payForIt">立即购买</text>
+  <text class="addToCart">加入购物车</text>
+</view>
+<scroll-view scroll-y="true">
+  <image class="swiperImage" src="../common/productImg.jpg"></image>
+  <view class="priceContent">
+    <text class="price">¥599-699</text>
+    <text class="marketPrice">原价：¥1168-1198</text>
+    <view class="otherNumber">
+      <text>快递：0.00</text>
+      <text>月销5434</text>
+      <text>访问12334</text>
+    </view>
+  </view>
+  <text class="goodsName">商品名称，分为两行展示，多月字数截取用省略号展示</text>
+  <view class="advContent">
+    <image class="logoImg" src="../common/productImg.jpg"></image>
+    <text class="advText">广告词，后台管理需要做字数限制。广告词，后台管理需要做字数限制。</text>
+  </view>
+  <view class="userInfo">
+    <view class="saleTicket">
+      <text>优惠券</text>
+      <text class="getTicket">领取</text>
+    </view>
+    <view class="address">
+      <text>北京市海淀区大运村公寓</text>
+      <image src="../common/navTo.png"></image>
+    </view>
+  </view>
+  <view class="goodsDetail">
+    <text class="detailTitle">商品参数</text>
+    <view class="goodsSpec" wx:for="{{goodsSpec}}" wx:key="key">
+      <text>{{item.key}}: </text>
+      <text>{{item.value}}</text>
+    </view>
+    <view class="goodsStar">
+      <text>商品评级</text>
+      <image src="src"></image>
+    </view>
+  </view>
+</scroll-view>
