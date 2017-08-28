@@ -6,16 +6,6 @@ App({
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs);
 
-        // wx.request({
-        //     url: 'https://www.qaformath.com/zbuniserver-api/category/get-categories-list',
-        //     header: {
-        //         'content-type': 'application/json'
-        //     },
-        //     success: function (res) {
-        //         console.log(res.data)
-        //     }
-        // });
-
     },
     getCategoriesList: function (cb) {
       wx.request({
@@ -46,16 +36,24 @@ App({
             })
         }
     },
-    getRequest: function(url, cb) {
+    getRequest: function(url, option) {
+      let method;
+      let data;
+      if(option){
+        method = option.method || 'GET';
+        data = option.data || '';
+      }
       return new Promise(function(resolve,reject){
         wx.request({
-          url: url,
+          url,
+          method,
+          data,
           header: {
             'content-type': 'application/json'
           },
           success: function (res) {
             if(res.data.retCode == 0){
-              resolve(res.data.data);
+              resolve(res.data.data || res.data);
             }else{
               reject(res.data);
             }
@@ -77,6 +75,7 @@ App({
       })
     },
     globalData: {
-        userInfo: null
+        userInfo: null,
+        categorySelect: 0
     }
 })

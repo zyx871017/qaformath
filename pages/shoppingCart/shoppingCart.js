@@ -1,9 +1,7 @@
 // shoppingCart.js
+var app = getApp();
+var common = require('./../common/config/common.js').common;
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     location: '',
     allSelect: false,
@@ -44,9 +42,10 @@ Page({
     }
     for(let i = 0; i < goodsList.length; i ++) {
       if(goodsList[i].select){
-        totalPrice += goodsList[i].goodsCount * goodsList[i].price;
+        totalPrice += goodsList[i].goods_count * goodsList[i].goods_price;
       }
     }
+    console.log(totalPrice);
     return totalPrice.toFixed(2);
   },
 
@@ -57,7 +56,7 @@ Page({
     }
     for (let i = 0; i < goodsList.length; i++) {
       if (goodsList[i].select) {
-        totalDiscount += goodsList[i].goodsCount * goodsList[i].discount;
+        totalDiscount += goodsList[i].goods_count * goodsList[i].discount_price;
       }
     }
     return totalDiscount.toFixed(2);
@@ -110,13 +109,13 @@ Page({
   },
 
   countMinus: function(e){
-    const goodsCount = e.currentTarget.dataset.item.goodsCount;
-    if(goodsCount == 0) {
+    const goods_count = e.currentTarget.dataset.item.goods_count;
+    if (goods_count == 0) {
       return;
     }
     const listIndex = e.currentTarget.dataset.index;
     const goodsList = this.data.goodsList;
-    goodsList[listIndex].goodsCount = goodsCount - 1;
+    goodsList[listIndex].goods_count = goods_count - 1;
     const totalPrice = this.totalPrice(goodsList);
     const totalDiscount = this.totalDiscount(goodsList);
     this.setData({
@@ -127,10 +126,10 @@ Page({
   },
 
   countPlus: function (e) {
-    const goodsCount = e.currentTarget.dataset.item.goodsCount;
+    const goods_count = e.currentTarget.dataset.item.goods_count;
     const listIndex = e.currentTarget.dataset.index;
     const goodsList = this.data.goodsList;
-    goodsList[listIndex].goodsCount = goodsCount + 1;
+    goodsList[listIndex].goods_count = goods_count + 1;
     const totalPrice = this.totalPrice(goodsList);
     const totalDiscount = this.totalDiscount(goodsList);
     this.setData({
@@ -140,59 +139,14 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    const that = this;
+    app.getRequest(`${common.apiPrefix}/shopping/shopping-car-list?userId=2`)
+    .then(function(res){
+      console.log(res);
+      that.setData({
+        goodsList: res.dataArr
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

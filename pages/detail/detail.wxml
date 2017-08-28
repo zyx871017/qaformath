@@ -1,34 +1,34 @@
 <view class="actionContent">
-  <view class="connect">
+  <view class="connect" bindtap="navToPage" data-url="{{'../shoppingCart/shoppingCart'}}">
     <image src="../common/orders.png"></image>
     <text>购物车</text>
   </view>
-  <view class="connect">
+  <view class="connect" bindtap="navToPage" data-url="{{'../index/index'}}">
     <image src="../common/index.png"></image>
     <text>首页</text>
   </view>
   <view class="follow">
-    <image src="../common/orders.png"></image>
+    <image src="../common/like.png"></image>
     <text>收藏</text>
   </view>
   <text class="payForIt">立即购买</text>
   <text class="addToCart">加入购物车</text>
 </view>
 <scroll-view scroll-y="true">
-  <image class="swiperImage" src="../common/productImg.jpg"></image>
+  <image class="swiperImage" src="{{goodsDetail.goods_image}}"></image>
   <view class="priceContent">
-    <text class="price">¥599-699</text>
-    <text class="marketPrice">原价：¥1168-1198</text>
+    <text class="price">¥{{goodsDetail.goods_price}}</text>
+    <text class="marketPrice">原价：¥{{goodsDetail.goods_marketprice}}</text>
     <view class="otherNumber">
       <text>快递：0.00</text>
-      <text>月销5434</text>
-      <text>访问12334</text>
+      <text>月销{{goodsDetail.goods_salenum}}</text>
+      <text>访问{{goodsDetail.goods_click}}</text>
     </view>
   </view>
-  <text class="goodsName">商品名称，分为两行展示，多月字数截取用省略号展示</text>
+  <text class="goodsName">{{goodsDetail.goods_name}}</text>
   <view class="advContent">
     <image class="logoImg" src="../common/productImg.jpg"></image>
-    <text class="advText">广告词，后台管理需要做字数限制。广告词，后台管理需要做字数限制。</text>
+    <text class="advText">{{goodsDetail.goods_jingle}}</text>
   </view>
   <view class="userInfo">
     <view class="saleTicket">
@@ -48,7 +48,11 @@
     </view>
     <view class="goodsStar">
       <text>商品评级</text>
-      <image src="src"></image>
+      <image src="{{goodsDetail.evaluation_good_star >= 5 ? starYellow : starGrey}}"></image>
+      <image src="{{goodsDetail.evaluation_good_star >= 4 ? starYellow : starGrey}}"></image>
+      <image src="{{goodsDetail.evaluation_good_star >= 3 ? starYellow : starGrey}}"></image>
+      <image src="{{goodsDetail.evaluation_good_star >= 2 ? starYellow : starGrey}}"></image>
+      <image src="{{goodsDetail.evaluation_good_star >= 1 ? starYellow : starGrey}}"></image>
     </view>
   </view>
 </scroll-view>

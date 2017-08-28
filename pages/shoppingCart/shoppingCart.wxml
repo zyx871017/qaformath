@@ -15,19 +15,19 @@
         <view class="notChoose" bindtap="singleSelectTap" data-item="{{item}}"
          data-index="{{index}}" wx:if="{{!item.select}}"></view>
       </view>
-      <image src="../common/productImg.jpg"></image>
+      <image src="{{item.goods_img}}"></image>
       <view class="goodsDetial">
         <view class="goodsDetailShow">
-          <text class="goodsSummary">{{item.goodsSummary}}</text>
+          <text class="goodsSummary">{{item.goods_name}}</text>
           <view class="goodsNumber">
-            <text class="goodsPrice">¥ {{item.price}}</text>
+            <text class="goodsPrice">¥ {{item.goods_price}}</text>
             <text class="goodsOther"></text>
           </view>
         </view>
         <view class="goodsAction">
           <text class="goodsMinus" bindtap="countMinus"
            data-item="{{item}}" data-index="{{index}}">-</text>
-          <text class="goodsCount">{{item.goodsCount}}</text>
+          <text class="goodsCount">{{item.goods_count}}</text>
           <text class="goodsPlus" bindtap="countPlus"
            data-item="{{item}}" data-index="{{index}}">+</text>
         </view>

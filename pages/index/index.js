@@ -1,13 +1,13 @@
 //index.js
 //获取应用实例
 var common = require('./../common/config/common.js').common;
-var app = getApp()
+var app = getApp();
 Page({
   onLoad: function() {
     var that = this
     //调用应用实例的方法获取全局数据
     var promises = [];
-    var hotBanners = app.getRequest(`${common.apiPrefix}/home/hot-banners`)
+    var hotBanners = app.getRequest(`${common.apiPrefix}/home/hot-banners`);
     var saleList = app.getRequest(`${common.apiPrefix}/home/sales-list`);
     var goodsCategory = app.getRequest(`${common.apiPrefix}/home/goods-category`);
     promises.push(hotBanners);
@@ -60,9 +60,17 @@ Page({
     })
   },
   productTap: function(e) {
-    var param = e.currentTarget.dataset.product;
+    var param = e.currentTarget.dataset.product.id;
     wx.navigateTo({
       url: '../detail/detail?productId=' + param
+    })
+  },
+  cateTap: function(e) {
+    var param = e.currentTarget.dataset.product.category_id;
+    console.log(param);
+    app.globalData.categorySelect = param;
+    wx.switchTab({
+      url: '../category/category'
     })
   }
 })

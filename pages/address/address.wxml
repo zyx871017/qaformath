@@ -1,0 +1,10 @@
+<view class="classname">
+  <view class="goodsSpec" wx:for="{{addressList}}" data-index="{{index}}" bindtap="selectTap"
+  wx:key="id">
+    <view class="goodsSelect left">
+      <icon class="left" type="success" color="red" wx:if="{{item.default}}" size="20" />
+      <view class="notChoose left" wx:if="{{!item.default}}"></view>
+    </view>
+    <text>{{item.detail}}</text>
+  </view>
+</view>

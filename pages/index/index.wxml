@@ -1,27 +1,27 @@
 <scroll-view>
   <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" >
     <block wx:for="{{swiperUrl}}" wx:key="id">
-      <swiper-item>
+      <swiper-item data-product="{{item}}" bindtap="cateTap">
         <image class="bannerImg" src="{{item.goods_image}}" background-size="cover" mode="scaleToFill"></image>
       </swiper-item>
     </block>  
   </swiper>
   <view class="products">
-    <view class="productItem" wx:for="{{products}}" bindtap="productTap" wx:key="id" data-product="{{item}}">
-      <image class="productImg" src="{{item.goods_image}}"  mode="scaleToFill"></image>
+    <view class="productItem" wx:for="{{products}}" bindtap="cateTap" wx:key="id" data-product="{{item}}">
       <text class="productText">{{item.category_name}}</text>
+      <image class="productImg" src="{{item.goods_image}}"  mode="scaleToFill"></image>
     </view>
   </view>
   <view class="hotBlank">热卖产品
     <view class="arrow"></view>
   </view>
-  <scroll-view class="hotProductsScroll" scroll-x="{{true}}" scroll-y="{{false}}">
-    <view class="hotProductsBlock">
-      <view class="hotProductsItem" wx:for="{{hotProducts}}" wx:key="id">
-        <image class="hotProductsImg" src="{{item.goods_image}}"></image>
-        <text class="hotProductsName">{{item.goods_name}}</text>
-        <text class="hotProductsPrice">¥{{item.goods_price}}</text>
-      </view>
+  <view class="hotProductsBlock">
+    <view class="hotProductsItem" bindtap="productTap" data-product="{{item}}"
+      wx:for="{{hotProducts}}" wx:key="id">
+      <image class="hotProductsImg" src="{{item.goods_image}}"></image>
+      <text class="hotProductsName">{{item.goods_name}}</text>
+      <text class="hotProductsPrice">¥{{item.goods_price}}</text>
+      <image class="hotAddCart" src="../common/ordersActive.png"></image>
     </view>
-  </scroll-view>
+  </view>
 </scroll-view>

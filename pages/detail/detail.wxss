@@ -230,10 +230,13 @@ page{
   color: #ff9503;
   border-bottom: 1rpx solid #eee;
   display: block;
+  box-sizing: border-box;
 }
 
 .goodsStar image{
   float: right;
-  height: 24rpx;
-  width: 200rpx;
+  height: 26rpx;
+  width: 26rpx;
+  display: block;
+  margin: 37rpx 5rpx;
 }

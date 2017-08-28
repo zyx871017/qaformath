@@ -6,15 +6,39 @@ Page({
 
     var getCategoriesList = app.getRequest(`${common.apiPrefix}/category/get-categories-list`)
     .then(function(res){
-      app.getRequest(`${common.apiPrefix}/category/get-category-detail/${res[0].id}`)
+      console.log(res);
+      let categorySelect = {};
+      if(app.globalData.categorySelect != 0){
+        for(let i = 0; i < res.length; i ++){
+          if(res[i].id == app.globalData.categorySelect){
+            categorySelect = res[i];
+          }
+        }
+      }else{
+        categorySelect = res[0];
+      }
+      app.getRequest(`${common.apiPrefix}/category/get-category-detail/${categorySelect.id}`)
       .then(function(resData){
+        console.log(categorySelect);
         that.setData({
           categoryList: res,
-          categoryActive: res[0],
+          categoryActive: categorySelect,
           secCategoryList: resData
         })
       })
     });
+  },
+  onShow: function() {
+    const { categoryActive, categoryList } = this.data;
+    if (categoryActive.id != app.globalData.categorySelect){
+      for (let i = 0; i < categoryList.length; i++) {
+        if (categoryList[i].id == app.globalData.categorySelect) {
+          this.setData({
+            categoryActive: categoryList[i]
+          });
+        }
+      }
+    }
   },
   data: {
     categoryList:[],

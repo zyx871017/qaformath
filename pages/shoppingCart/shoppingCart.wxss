@@ -83,7 +83,7 @@ icon{
 }
 
 .goodsSummary{
-  width: 372rpx;
+  width: 358rpx;
   height: 128rpx;
   float: left;
 }
