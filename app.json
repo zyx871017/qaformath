@@ -6,7 +6,8 @@
     "pages/myself/myself",
     "pages/detail/detail",
     "pages/shoppingCart/shoppingCart",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/addrEdit/addrEdit"
   ],
   "window": {
     "backgroundTextStyle": "light",

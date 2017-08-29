@@ -37,6 +37,33 @@ Page({
       });
   },
 
+  deleteAddress: function(e) {
+    const id = e.currentTarget.dataset.id;
+    wx.getRequest(`${common.apiPrefix}/user-address/delete`,{
+      method: 'DELETE',
+      data: {
+        id,
+        user_id:2
+      }
+    })
+      .then(function(res){
+        console.log(res);
+      })
+  },
+
+  navToEdit: function(e) {
+    const id = e.currentTarget.dataset.id;
+    if(id == 0 || id){
+      wx.navigateTo({
+        url: `../addrEdit/addrEdit?id=${id}`,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../addrEdit/addrEdit',
+      })
+    }
+  },
+
   selectTap: function(e) {
     const index = e.currentTarget.dataset.index;
     const addressList = this.data.addressList;

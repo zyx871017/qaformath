@@ -1,10 +1,28 @@
-<view class="classname">
-  <view class="goodsSpec" wx:for="{{addressList}}" data-index="{{index}}" bindtap="selectTap"
+<scroll-view class="classname" scroll-y="true">
+  <view class="addressItem" wx:for="{{addressList}}" data-index="{{index}}" bindtap="selectTap"
   wx:key="id">
-    <view class="goodsSelect left">
-      <icon class="left" type="success" color="red" wx:if="{{item.default}}" size="20" />
-      <view class="notChoose left" wx:if="{{!item.default}}"></view>
+    <view class="nameNumber">
+      <text class="name">赵宇翔</text>
+      <text class="number">18618146593</text>
     </view>
-    <text>{{item.detail}}</text>
+    <text class="adrDetail">北京市海淀区文慧园路志强南园9号楼3单元201</text>
+    <view class="addressAction">
+      <view class="setDefault left">
+        <icon class="left" type="success" color="red" wx:if="{{item.default}}" size="20" />
+        <view class="notChoose left" wx:if="{{!item.default}}"></view>
+        <text class="defaultText left">设为默认</text>
+      </view>
+      <view class="addressDelete right" bindtap="deleteAddress" data-id="{{item.id}}">
+        <image src="../common/trash.png" class="deleteImg"></image>
+        <text class="deleteText">删除</text>
+      </view>
+      <view class="addressEdit right" bindtap="navToEdit" data-id="{{item.id}}">
+        <image src="../common/editor.png" class="editImg"></image>
+        <text class="editText">编辑</text>
+      </view>
+    </view>
   </view>
+</scroll-view>
+<view class="addcontent">
+  <text class="addbtn" bindtap="navToEdit">新建地址</text>
 </view>
