@@ -7,26 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addressList:[{
-      detail: '北京市朝阳区中山公园',
-      default: true
-    },{
-      addr: '北京市朝阳区中山公园',
-      default: false
-    }, {
-      addr: '北京市朝阳区中山公园',
-      default: false
-    }, {
-      addr: '北京市朝阳区中山公园',
-      default: false
-    }
-    ],
+    addressList:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onShow: function(options) {
     const that = this;
     app.getRequest(`${common.apiPrefix}/user-address/2`)
       .then(function(res) {
@@ -39,7 +26,7 @@ Page({
 
   deleteAddress: function(e) {
     const id = e.currentTarget.dataset.id;
-    wx.getRequest(`${common.apiPrefix}/user-address/delete`,{
+    app.getRequest(`${common.apiPrefix}/user-address/delete`,{
       method: 'DELETE',
       data: {
         id,

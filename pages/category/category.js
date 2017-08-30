@@ -19,7 +19,7 @@ Page({
       }
       app.getRequest(`${common.apiPrefix}/category/get-category-detail/${categorySelect.id}`)
       .then(function(resData){
-        console.log(categorySelect);
+        console.log(resData);
         that.setData({
           categoryList: res,
           categoryActive: categorySelect,
@@ -55,6 +55,13 @@ Page({
         categoryActive: e.currentTarget.dataset.category,
         secCategoryList: res
         });
+    });
+  },
+
+  goodTap: function(e) {
+    const id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../detail/detail?productId=' + id
     });
   }
 })

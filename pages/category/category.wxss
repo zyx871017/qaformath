@@ -25,6 +25,7 @@
 .categoryListItem {
   height: 97rpx;
   text-align: center;
+  font-size: 30rpx;
   width: 100%;
   line-height: 97rpx;
 }
@@ -52,10 +53,13 @@
 }
 
 .secCategoryItem {
-  width: 185rpx;
-  height: 184rpx;
+  width: 174rpx;
+  border: 1rpx #dedede solid;
+  height: 230rpx;
   float: left;
-  margin:1rpx;
+  margin:7rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
 }
 
 .secCategoryImg {
@@ -65,10 +69,12 @@
 }
 
 .secCategoryName {
-  font-size: 30rpx;
-  line-height: 48rpx;
-  height: 48rpx;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  height: 60rpx;
   text-align: center;
   width: 100%;
   display: block;
+  overflow: hidden;
+  margin-top: 10rpx;
 }
