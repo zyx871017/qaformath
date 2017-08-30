@@ -5,31 +5,7 @@ Page({
   data: {
     location: '',
     allSelect: false,
-    goodsList:[{
-      goodsSummary: '产品简介',
-      goodsCount: 2,
-      select: true,
-      discount: 1.2,
-      price: 9.9
-    }, {
-      goodsSummary: '产品简介',
-      goodsCount: 2,
-      select: false,
-      discount: 1.2,
-      price: 9.9
-    }, {
-        goodsSummary: '产品简介',
-        goodsCount: 2,
-        select: true,
-        discount: 1.2,
-        price: 9.9
-    }, {
-      goodsSummary: '产品简介',
-      goodsCount: 2,
-      select: true,
-      discount: 1.2,
-      price: 9.9
-    }],
+    goodsList:[],
     totalPrice: 0,
     totalDiscount: 0,
     totalCount: 0
@@ -141,11 +117,27 @@ Page({
 
   onLoad: function (options) {
     const that = this;
-    app.getRequest(`${common.apiPrefix}/shopping/shopping-car-list?userId=2`)
+    const promises = [];
+    const addrList = app.getRequest(`${common.apiPrefix}/user-address/2`);
+    const cartList = app.getRequest(`${common.apiPrefix}/shopping/shopping-car-list?userId=2`);
+    promises.push(addrList);
+    promises.push(cartList);
+    Promise.all(promises)
     .then(function(res){
       console.log(res);
+      const addList = res[0];
+      let address = '';
+      for(let i = 0; i < addList.length; i ++) {
+        if(addList[i].default){
+          address += addList[i].province;
+          address += addList[i].province == addList[i].city ? '' : addList[i].city;
+          address += addList[i].district;
+          address += addList[i].detail;
+        }
+      }
       that.setData({
-        goodsList: res.dataArr
+        goodsList: res[1].dataArr,
+        location: address
       })
     })
   },

@@ -1,1 +1,46 @@
-/* addrEdit.wxss */
+page {
+  background-color: #eee;
+}
+
+input {
+  height:100rpx;
+  border-bottom: 1rpx solid #ddd;
+  width: 100%;
+  padding: 0 26rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  line-height: 100rpx;
+}
+
+picker {
+  height: 100rpx;
+  border-bottom: 1rpx solid #ddd;
+  width: 100%;
+  padding: 0 26rpx;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.detail {
+  height: 240rpx;
+  font-size: 30rpx;
+  padding: 30rpx 26rpx;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+.saveBtn {
+  width: 700rpx;
+  height: 94rpx;
+  margin: 36rpx auto;
+  background-color: #ff0027;
+  color: #fff;
+  font-size: 34rpx;
+  line-height: 94rpx;
+  text-align: center;
+}

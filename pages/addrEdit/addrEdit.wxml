@@ -1,2 +1,11 @@
-<!--addrEdit.wxml-->
-<text>addrEdit.wxml</text>
+<view>
+  <input type="text" placeholder="收货人姓名" value="{{name}}" data-key="name" bindinput="inputChange" />
+  <input type="number" placeholder="手机号码" value="{{number}}" data-key="number" bindinput="inputChange" />
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="picker">
+      {{region[0]}} {{region[1]}} {{region[2]}}
+    </view>
+  </picker>
+  <textarea class="detail" placeholder="详细地址" value="{{detail}}" data-key="detail" bindinput="inputChange" />
+</view>
+<view class="saveBtn" bindtap="saveAddress">保存</view>

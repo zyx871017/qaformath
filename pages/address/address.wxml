@@ -1,13 +1,12 @@
 <scroll-view class="classname" scroll-y="true">
-  <view class="addressItem" wx:for="{{addressList}}" data-index="{{index}}" bindtap="selectTap"
-  wx:key="id">
+  <view class="addressItem" wx:for="{{addressList}}" wx:key="id">
     <view class="nameNumber">
-      <text class="name">赵宇翔</text>
-      <text class="number">18618146593</text>
+      <text class="name">{{item.receiver}}</text>
+      <text class="number">{{item.phone}}</text>
     </view>
-    <text class="adrDetail">北京市海淀区文慧园路志强南园9号楼3单元201</text>
+    <text class="adrDetail">{{item.province}}{{item.city == item.province?'':item.city}}{{item.district}}{{item.detail}}</text>
     <view class="addressAction">
-      <view class="setDefault left">
+      <view class="setDefault left" data-index="{{index}}" bindtap="selectTap">
         <icon class="left" type="success" color="red" wx:if="{{item.default}}" size="20" />
         <view class="notChoose left" wx:if="{{!item.default}}"></view>
         <text class="defaultText left">设为默认</text>

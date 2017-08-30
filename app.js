@@ -5,6 +5,11 @@ App({
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs);
+        wx.login({
+          success: function(res) {
+            console.log(res);
+          }
+        })
 
     },
     getCategoriesList: function (cb) {

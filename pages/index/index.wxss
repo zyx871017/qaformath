@@ -19,15 +19,15 @@
 }
 
 .productImg {
-  width:212rpx;
-  height:212rpx;
-  margin:  40rpx 50rpx 50rpx;
+  width: 212rpx;
+  height: 212rpx;
+  margin: 40rpx 50rpx 50rpx;
 }
 
 .productText {
   text-align: center;
   width: 312rpx;
-  font-size: 24rpx;
+  font-size: 30rpx;
   display: block;
   margin-top: 40rpx;
 }

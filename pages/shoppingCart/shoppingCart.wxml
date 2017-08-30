@@ -1,5 +1,5 @@
 <!--shoppingCart.wxml-->
-<view class="destination">送货地址：。。。</view>
+<view class="destination">送货地址：{{location}}</view>
 <scroll-view>
   <view class="goodsListContent">
     <view class="allSelectContent">
