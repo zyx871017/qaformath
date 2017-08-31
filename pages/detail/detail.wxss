@@ -77,8 +77,10 @@ page{
 .priceContent{
   width: 100%;
   height: 170rpx;
+  display: block;
   background-color: #fff;
   border-bottom: 1rpx solid #ccc;
+  box-sizing: border-box;
 }
 
 .price{
@@ -87,13 +89,16 @@ page{
   color: #ff0137;
   font-weight: 900;
   font-size: 36rpx;
+  height: 66rpx;
   margin-left: 24rpx;
+  box-sizing: border-box;
 }
 
 .marketPrice{
   display: block;
   margin-top: 8rpx;
   font-size: 24rpx;
+  height: 24rpx;
   color: #9e9e9e;
   text-decoration:line-through;
   margin-left: 24rpx;
@@ -102,6 +107,7 @@ page{
 .otherNumber {
   margin-top: 22rpx;
   font-size: 24rpx;
+  box-sizing: border-box;
   color: #9e9e9e;
   display: flex;
   padding: 0 24rpx;

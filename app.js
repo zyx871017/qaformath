@@ -1,15 +1,7 @@
 //app.js
+const common = require('./pages/common/config/common.js');
 App({
     onLaunch: function () {
-        //调用API从本地缓存中获取数据
-        var logs = wx.getStorageSync('logs') || []
-        logs.unshift(Date.now())
-        wx.setStorageSync('logs', logs);
-        wx.login({
-          success: function(res) {
-            console.log(res);
-          }
-        })
 
     },
     getCategoriesList: function (cb) {
@@ -48,9 +40,10 @@ App({
         method = option.method || 'GET';
         data = option.data || '';
       }
+      console.log(common.getToken());
       return new Promise(function(resolve,reject){
         wx.request({
-          url,
+          url: `${url}?token=${common.getToken()}`,
           method,
           data,
           header: {

@@ -1,6 +1,6 @@
 // shoppingCart.js
 var app = getApp();
-var common = require('./../common/config/common.js').common;
+var common = require('./../common/config/common.js');
 Page({
   data: {
     location: '',
@@ -119,7 +119,7 @@ Page({
     const that = this;
     const promises = [];
     const addrList = app.getRequest(`${common.apiPrefix}/user-address/2`);
-    const cartList = app.getRequest(`${common.apiPrefix}/shopping/shopping-car-list?userId=2`);
+    const cartList = app.getRequest(`${common.apiPrefix}/shopping/shopping-car-list`);
     promises.push(addrList);
     promises.push(cartList);
     Promise.all(promises)

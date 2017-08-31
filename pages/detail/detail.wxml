@@ -7,12 +7,12 @@
     <image src="../common/index.png"></image>
     <text>首页</text>
   </view>
-  <view class="follow">
+  <view class="follow" bindtap="addToCollect" data-id="{{goodsDetail.id}}">
     <image src="../common/like.png"></image>
     <text>收藏</text>
   </view>
   <text class="payForIt">立即购买</text>
-  <text class="addToCart">加入购物车</text>
+  <text class="addToCart" bindtap="addToCart" data-id="{{goodsDetail.id}}">加入购物车</text>
 </view>
 <scroll-view scroll-y="true">
   <image class="swiperImage" src="{{goodsDetail.goods_image}}"></image>
@@ -42,7 +42,7 @@
   </view>
   <view class="goodsDetail">
     <text class="detailTitle">商品参数</text>
-    <view class="goodsSpec" wx:for="{{goodsSpec}}" wx:key="key">
+    <view class="goodsSpec" wx:for="{{goodsDetail.goods_spec}}" wx:key="key">
       <text>{{item.key}}: </text>
       <text>{{item.value}}</text>
     </view>

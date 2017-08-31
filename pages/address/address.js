@@ -1,5 +1,5 @@
 // address.js
-var common = require('./../common/config/common.js').common;
+var common = require('./../common/config/common.js');
 var app = getApp();
 Page({
 

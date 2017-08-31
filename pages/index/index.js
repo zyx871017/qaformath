@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-var common = require('./../common/config/common.js').common;
+var common = require('./../common/config/common.js');
 var app = getApp();
 Page({
   onLoad: function() {

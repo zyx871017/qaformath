@@ -1,5 +1,5 @@
 var app = getApp();
-var common = require('./../common/config/common.js').common;
+var common = require('./../common/config/common.js');
 Page({
   onLoad: function () {
     var that = this;

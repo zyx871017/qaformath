@@ -1,5 +1,5 @@
 // addrEdit.js
-var common = require('./../common/config/common.js').common;
+var common = require('./../common/config/common.js');
 var app = getApp();
 Page({
   data: {
@@ -105,6 +105,9 @@ Page({
           }
         }
       }).then(function (res) {
+        wx.showToast({
+          title: JSON.stringify(res),
+        });
         if (res.retCode == 0) {
           wx.showToast({
             title: '修改成功',

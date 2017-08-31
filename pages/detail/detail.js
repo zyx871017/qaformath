@@ -1,5 +1,5 @@
 // detail.js
-var common = require('./../common/config/common.js').common;
+var common = require('./../common/config/common.js');
 var app = getApp();
 Page({
 
@@ -36,5 +36,24 @@ Page({
     wx.switchTab({
       url: url
     });
+  },
+  addToCart: function(e) {
+    const id = e.currentTarget.dataset.id;
+    app.getRequest(`${common.apiPrefix}/shopping/add-shopping-car`,{
+      method: 'POST',
+      data: {
+        goodsId: id,
+        goodsCount: 1
+      }
+    })
+      .then(function(res) {
+        console.log(res);
+        wx.showToast({
+          title: JSON.stringify(res),
+        });
+        wx.showToast({
+          title: '添加成功',
+        })
+      })
   }
 })
