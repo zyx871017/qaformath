@@ -115,7 +115,7 @@ Page({
     });
   },
 
-  onLoad: function (options) {
+  onShow: function (options) {
     const that = this;
     const promises = [];
     const addrList = app.getRequest(`${common.apiPrefix}/user-address/2`);

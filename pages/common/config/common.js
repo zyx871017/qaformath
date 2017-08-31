@@ -1,21 +1,6 @@
-module.exports.getToken = function() {
 
-  let token = wx.getStorageSync('token');
-  if(token){
-    return token;
-  }
 
-  wx.checkSession({
-    success: function (res) {
-      return token || requestToken();
-    },
-    fail: function (res) {
-      return requestToken();
-    }
-  });
-}
-
-function requestToken() {
+function getToken() {
   const promises = [];
   const getUserInfo = new Promise(function (resolve, reject) {
     wx.getUserInfo({
@@ -66,6 +51,9 @@ function requestToken() {
             key: 'token',
             data: res.data.token,
           });
+          wx.reLaunch({
+            url: '../index/index',
+          })
           return res.data.token;
         }
       });
@@ -74,5 +62,24 @@ function requestToken() {
       console.log(res);
     })
 };
+
+function checkLogin() {
+  wx.checkSession({
+    fail: function() {
+      getToken();
+    }
+  })
+}
+
+module.exports.checkToken = function() {
+  const token = wx.getStorageSync('token');
+  if(token){
+    checkLogin();
+  }else{
+    getToken();
+  }
+}
+
+module.exports.getToken = getToken;
 
 module.exports.apiPrefix = 'https://www.qaformath.com/zbuniserver-api';

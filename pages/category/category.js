@@ -42,7 +42,7 @@ Page({
   },
   data: {
     categoryList:[],
-    categoryImg: '../common/movib1.jpg',
+    categoryImg: '',
     categoryActive: 'iPhone',
     secCategoryList:[]
   },
