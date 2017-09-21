@@ -65,6 +65,11 @@ module.exports.requestToken = function() {
           wx.setStorage({
             key: 'token',
             data: res.data.token,
+            success: function(){
+              wx.reLaunch({
+                url: '../index/index',
+              })
+            }
           });
           return res.data.token;
         }
