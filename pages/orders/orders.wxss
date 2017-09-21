@@ -84,12 +84,6 @@
   text-align: center;
   margin: 11rpx 20rpx;
   color: red;
-  font-size: 28rpx;
-}
-
-.ordersButton.second {
-  border: 1rpx solid gray;
-  color: gray;
 }
 
 .noOrders {

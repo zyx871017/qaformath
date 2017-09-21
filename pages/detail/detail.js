@@ -24,6 +24,7 @@ Page({
     const that = this;
     app.getRequest(`${common.apiPrefix}/home/get-goods-info/${productId}`)
     .then(function(res) {
+      console.log(res);
       that.setData({
         goodsDetail: res
       });

@@ -116,7 +116,6 @@ Page({
     });
   },
 
-<<<<<<< HEAD
   confirmPay: function () {
     const goodsArray = [];
     const goodsList = this.data.goodsList;
@@ -149,36 +148,19 @@ Page({
         signType: 'MD5',
         paySign: MD5.hexMD5(paySign).toUpperCase(),
         success:function(res){
-          alert(res);
-          wx.showModal({
-            title: '支付成功',
-            success: function (res) {
-              wx.redirectTo({
-                url: '../orders/orders',
-              })
-            }
-          })
+          console.log(res);
         },
         fail: function(res){
-          alert(res);
-          wx.showModal({
-            title: '支付失败',
-            success: function (res) {
-              wx.redirectTo({
-                url: '../orders/orders',
-              })
-            }
-          })
+          console.log(res);
         },
         complete: function(res){
+          console.log(res);
         }
       })
     });
   },
 
-=======
->>>>>>> 68cccf69f368fe49926859ae167e4e18265a8d60
-  onShow: function (options) {
+  onLoad: function (options) {
     const that = this;
     const promises = [];
     const addrList = app.getRequest(`${common.apiPrefix}/user-address/2`);
