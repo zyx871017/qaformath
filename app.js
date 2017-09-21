@@ -1,8 +1,9 @@
 //app.js
 const common = require('./pages/common/config/common.js');
+const token = wx.getStorageSync('token');
 App({
     onLaunch: function () {
-
+      common.checkToken();
     },
     getCategoriesList: function (cb) {
       wx.request({
@@ -42,7 +43,7 @@ App({
       }
       return new Promise(function(resolve,reject){
         wx.request({
-          url: `${url}?token=${common.getToken()}`,
+          url: `${url}?token=${token}`,
           method,
           data,
           header: {
@@ -50,6 +51,12 @@ App({
           },
           success: function (res) {
             console.log(res);
+<<<<<<< HEAD
+=======
+            if(res.data.retCode == -11){
+              common.getToken();
+            }
+>>>>>>> 68cccf69f368fe49926859ae167e4e18265a8d60
             if(res.data.retCode == 0){
               resolve(res.data.data || res.data);
             }else if(res.data.retCode === -11||res.data.retCode == -9){

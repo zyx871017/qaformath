@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9a772ae0-872b-4c18-b499-e701cdf2453a" name="hour_state_sftp" url="http://10.134.104.31">
+        <fileTransfer host="10.134.104.31" port="22" rootFolder="/search/zhaoyuxiang/project/hour_state" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

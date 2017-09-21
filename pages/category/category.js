@@ -42,7 +42,12 @@ Page({
   },
   data: {
     categoryList:[],
+<<<<<<< HEAD
     categoryActive: { category_image: '../common/ordersActive.png'},
+=======
+    categoryImg: '',
+    categoryActive: 'iPhone',
+>>>>>>> 68cccf69f368fe49926859ae167e4e18265a8d60
     secCategoryList:[]
   },
   categoryTap: function(e) {

@@ -116,6 +116,7 @@ Page({
     });
   },
 
+<<<<<<< HEAD
   confirmPay: function () {
     const goodsArray = [];
     const goodsList = this.data.goodsList;
@@ -175,6 +176,8 @@ Page({
     });
   },
 
+=======
+>>>>>>> 68cccf69f368fe49926859ae167e4e18265a8d60
   onShow: function (options) {
     const that = this;
     const promises = [];
