@@ -39,7 +39,7 @@
   <icon type="success" bindtap="allSelectTap" color="red" wx:if="{{allSelect}}" size="20" />
   <view class="notChoose" bindtap="allSelectTap" wx:if="{{!allSelect}}"></view>
   <text class="allSelect">全选</text>
-  <view class="payBtn right">结算({{totalCount}})</view>
+  <view class="payBtn right" bindtap='confirmPay'>结算({{totalCount}})</view>
   <view class="totalPriceContent right">
     <view class="totalSpent">
       <text class="totalPriceText">合计：</text>

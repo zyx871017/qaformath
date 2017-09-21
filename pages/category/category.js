@@ -42,8 +42,7 @@ Page({
   },
   data: {
     categoryList:[],
-    categoryImg: '../common/movib1.jpg',
-    categoryActive: 'iPhone',
+    categoryActive: { category_image: '../common/ordersActive.png'},
     secCategoryList:[]
   },
   categoryTap: function(e) {

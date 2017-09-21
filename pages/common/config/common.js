@@ -15,7 +15,7 @@ module.exports.getToken = function() {
   });
 }
 
-function requestToken() {
+module.exports.requestToken = function() {
   const promises = [];
   const getUserInfo = new Promise(function (resolve, reject) {
     wx.getUserInfo({
@@ -43,7 +43,6 @@ function requestToken() {
     .then(function (res) {
       const code = res[1].code;
       const { avatarUrl, city, country, gender, language, nickName, province } = res[0].userInfo;
-      console.log(code);
       wx.request({
         url: `https://www.qaformath.com/zbuniserver-api/user-token/token-info`,
         method: 'POST',
@@ -61,10 +60,14 @@ function requestToken() {
           'content-type': 'application/json'
         },
         success: function (res) {
-          console.log(res);
           wx.setStorage({
             key: 'token',
             data: res.data.token,
+            success: function(){
+              wx.reLaunch({
+                url: '../index/index',
+              })
+            }
           });
           return res.data.token;
         }
@@ -76,3 +79,13 @@ function requestToken() {
 };
 
 module.exports.apiPrefix = 'https://www.qaformath.com/zbuniserver-api';
+
+module.exports.getRandomStr = function(num){
+  const str = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWXYZ'; 
+  let res = '';
+  for(let i = 1; i <= num; i ++){
+    const index = Math.floor(Math.random() * 62);
+    res += str[index];
+  }
+  return res;
+}

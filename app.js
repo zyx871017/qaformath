@@ -19,7 +19,7 @@ App({
     },
 
     getUserInfo: function (cb) {
-        var that = this
+        var that = this;
         if (this.globalData.userInfo) {
             typeof cb == "function" && cb(this.globalData.userInfo)
         } else {
@@ -40,7 +40,6 @@ App({
         method = option.method || 'GET';
         data = option.data || '';
       }
-      console.log(common.getToken());
       return new Promise(function(resolve,reject){
         wx.request({
           url: `${url}?token=${common.getToken()}`,
@@ -50,8 +49,11 @@ App({
             'content-type': 'application/json'
           },
           success: function (res) {
+            console.log(res);
             if(res.data.retCode == 0){
               resolve(res.data.data || res.data);
+            }else if(res.data.retCode === -11||res.data.retCode == -9){
+              common.requestToken();
             }else{
               reject(res.data);
             }

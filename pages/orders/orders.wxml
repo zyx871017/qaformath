@@ -6,14 +6,46 @@
   <view class="noOrders" wx:if="{{order.length == 0}}">您还没有相关订单</view>
   <view class="orders" wx:for="{{order}}" wx:key="name">
     <view class="ordersTitleBar">
-      <text class="ordersName">{{item.name}}</text>
+      <text class="ordersName">{{statusList[item.status-1]}}</text>
     </view>
     <view class="ordersImageList">
-      <image class="ordersImage" src="{{item.imgUrl}}"></image>
+      <image class="ordersImage" wx:for="{{item.goods}}" wx:key="goods_id" src="{{item.goods_image}}"></image>
     </view>
-    <text class="ordersPrice">商品价格：￥{{item.price}}</text>
+    <text class="ordersPrice">商品价格：￥{{item.actual_price/100}}</text>
     <view class="ordersOprate">
-      <text class="ordersButton">付款</text>
+      <text 
+      class="ordersButton" 
+      bindtap="submitPay" 
+      data-id="{{item.id}}" 
+      wx:if="{{item.status == 1}}"
+      >付款</text>
+      <text 
+      class="ordersButton" 
+      bindtap="received" 
+      data-id="{{item.id}}" 
+      wx:if="{{item.status == 2}}"
+      >确认收货</text>
+      <text 
+      class="ordersButton" 
+      bindtap="submitPay" 
+      data-id="{{item.id}}" 
+      wx:if="{{item.status == 7}}"
+      >再来一单</text>
+      <text 
+      class="ordersButton second"
+      bindtap="sendBack" 
+      wx:if="{{item.status == 1}}"
+      >取消订单</text>
+      <text 
+      class="ordersButton second"
+      bindtap="sendBack" 
+      wx:if="{{item.status == 7||item.status == 5 || item.status == 3}}"
+      >删除订单</text>
+      <text 
+      class="ordersButton second"
+      bindtap="sendBack" 
+      wx:if="{{item.status == 7}}"
+      >退货</text>
     </view>
   </view>
 </scroll-view>

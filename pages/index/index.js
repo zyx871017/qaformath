@@ -25,33 +25,11 @@ Page({
     });
   },
   data: {
-    swiperUrl: ['../common/movib1.jpg', '../common/movib2.jpg', '../common/movib3.jpg'],
+    swiperUrl: [],
     motto: 'Hello World',
     userInfo: {},
     products: [],
-    hotProducts: [
-      {
-        name: '热卖产品一',
-        price: '20元',
-        url: '../common/movib1.jpg'
-      }, {
-        name: '热卖产品二',
-        price: '20元',
-        url: '../common/movib1.jpg'
-      }, {
-        name: '热卖产品三',
-        price: '20元',
-        url: '../common/movib1.jpg'
-      }, {
-        name: '热卖产品四',
-        price: '20元',
-        url: '../common/movib1.jpg'
-      }, {
-        name: '热卖产品五',
-        price: '20元',
-        url: '../common/movib1.jpg'
-      }
-    ]
+    hotProducts: []
   },
   //事件处理函数
   bindViewTap: function() {

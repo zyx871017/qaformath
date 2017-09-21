@@ -54,7 +54,6 @@ Page({
   selectTap: function(e) {
     const index = e.currentTarget.dataset.index;
     const addressList = this.data.addressList;
-    console.log(e.currentTarget.dataset.index);
     app.getRequest(`${common.apiPrefix}/user-address/set-default`,
     {method: 'PATCH', data: {
       userId: 2,

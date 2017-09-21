@@ -24,7 +24,6 @@ Page({
     const that = this;
     app.getRequest(`${common.apiPrefix}/home/get-goods-info/${productId}`)
     .then(function(res) {
-      console.log(res);
       that.setData({
         goodsDetail: res
       });
@@ -48,11 +47,13 @@ Page({
     })
       .then(function(res) {
         console.log(res);
-        wx.showToast({
-          title: JSON.stringify(res),
-        });
-        wx.showToast({
+        wx.showModal({
           title: '添加成功',
+          success: function(res){
+            if(res.confirm){
+              console.log(res.confirm);
+            }
+          }
         })
       })
   }
