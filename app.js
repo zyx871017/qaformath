@@ -2,7 +2,7 @@
 const common = require('./pages/common/config/common.js');
 App({
     onLaunch: function () {
-
+      common.requestToken();
     },
     getCategoriesList: function (cb) {
       wx.request({
@@ -52,7 +52,11 @@ App({
             if(res.data.retCode == 0){
               resolve(res.data.data || res.data);
             }else if(res.data.retCode === -11 || res.data.retCode === -9){
-              common.requestToken();
+              common.requestToken(function(){
+                wx.reLaunch({
+                  url: '../index/index'
+                })
+              });
             }else{
               reject(res.data);
             }

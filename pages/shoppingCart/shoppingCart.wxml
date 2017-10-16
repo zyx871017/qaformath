@@ -6,9 +6,9 @@
       <icon class="left" type="success" bindtap="allSelectTap" color="red" wx:if="{{allSelect}}" size="20" />
       <view class="notChoose left" bindtap="allSelectTap" wx:if="{{!allSelect}}"></view>
       <text class="allSel left">全选</text>
-      <text class="mallName right">店铺名称</text>
+      <text class="mallName right">电子商城</text>
     </view>
-    <view class="goodsList" wx:for="{{goodsList}}" wx:key="{{index}}">
+    <view class="goodsList" data-id="{{item.id}}" bindlongtap="showDeleteModal" wx:for="{{goodsList}}" wx:key="{{index}}">
       <view class="goodsSelect left">
         <icon type="success" bindtap="singleSelectTap" data-item="{{item}}"
          color="red" wx:if="{{item.select}}" size="20" data-index="{{index}}" />

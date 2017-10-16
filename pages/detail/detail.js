@@ -1,5 +1,6 @@
 // detail.js
 var common = require('./../common/config/common.js');
+var MD5 = require('./../common/config/md5.js');
 var app = getApp();
 Page({
 
@@ -24,7 +25,6 @@ Page({
     const that = this;
     app.getRequest(`${common.apiPrefix}/home/get-goods-info/${productId}`)
     .then(function(res) {
-      console.log(res);
       that.setData({
         goodsDetail: res
       });
@@ -32,10 +32,92 @@ Page({
   },
   navToPage: function(e) {
     const url = e.currentTarget.dataset.url;
-    console.log(e.currentTarget.dataset.url);
     wx.switchTab({
       url: url
     });
+  },
+  payForIt:function(){
+    const id = this.data.goodsDetail.id;
+    const goodsArray = [{ goodsId: id, goodsCount:1}];
+    app.getRequest(`${common.apiPrefix}/user-address/2`)
+    .then(function(res){
+      const addList = res;
+      let addressId;
+      for (let i = 0; i < addList.length; i++) {
+        if (addList[i].default) {
+          addressId = addList[i].id;
+        }
+      }
+      const preOrder = app.getRequest(`${common.apiPrefix}/order/submit-order`, {
+        method: 'POST',
+        data: {
+          userAddressId: addressId,
+          goodsArray,
+        }
+      })
+        .then(function (res) {
+          const timeStamp = Math.floor(new Date().getTime() / 1000).toString();
+          const packageStr = `prepay_id=${res.prepayId}`;
+          const nonceStr = res.nonceStr;
+          const paySign = `appId=${res.appId}&nonceStr=${nonceStr}&package=${packageStr}&signType=MD5&timeStamp=${timeStamp}&key=${res.key}`;
+          wx.requestPayment({
+            appId: res.appId,
+            timeStamp: Math.floor(new Date().getTime() / 1000).toString(),
+            nonceStr,
+            package: packageStr,
+            signType: 'MD5',
+            paySign: MD5.hexMD5(paySign).toUpperCase(),
+            success: function (res) {
+              wx.showModal({
+                title: '支付成功',
+                success: function (res) {
+                  wx.redirectTo({
+                    url: '../orders/orders',
+                  })
+                }
+              })
+            },
+            fail: function (res) {
+              wx.showModal({
+                title: '支付失败',
+                success: function (res) {
+                  wx.redirectTo({
+                    url: '../orders/orders',
+                  })
+                }
+              })
+            },
+            complete: function (res) {
+            }
+          })
+        });
+    })
+  },
+  addToCollect: function(e){
+    const id = e.currentTarget.dataset.id;
+    const that = this;
+    app.getRequest(`${common.apiPrefix}/goods/set-goods-collect`, {
+      method: 'POST',
+      data: {
+        goodsId: id
+      }
+    })
+      .then(function (res) {
+        wx.showModal({
+          title: '添加成功',
+          success: function (res) {
+            if (res.confirm) {
+              that.setData({
+                goodsDetail: Object.assign(
+                  {}, 
+                  that.data.goodsDetail,
+                  {goods_collect: !that.data.goodsDetail.goods_collect}
+                  )
+              })
+            }
+          }
+        })
+      })
   },
   addToCart: function(e) {
     const id = e.currentTarget.dataset.id;
@@ -47,12 +129,10 @@ Page({
       }
     })
       .then(function(res) {
-        console.log(res);
         wx.showModal({
           title: '添加成功',
           success: function(res){
             if(res.confirm){
-              console.log(res.confirm);
             }
           }
         })

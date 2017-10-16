@@ -8,10 +8,11 @@
     <text>首页</text>
   </view>
   <view class="follow" bindtap="addToCollect" data-id="{{goodsDetail.id}}">
-    <image src="../common/like.png"></image>
+    <image wx:if="{{goodsDetail.goods_collect==0}}" src="../common/like.png"></image>
+    <image wx:if="{{goodsDetail.goods_collect==1}}" src="../common/like_fill.png"></image>
     <text>收藏</text>
   </view>
-  <text class="payForIt">立即购买</text>
+  <text class="payForIt" bindtap="payForIt">立即购买</text>
   <text class="addToCart" bindtap="addToCart" data-id="{{goodsDetail.id}}">加入购物车</text>
 </view>
 <scroll-view scroll-y="true">

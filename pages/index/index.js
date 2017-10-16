@@ -14,14 +14,12 @@ Page({
     promises.push(saleList);
     promises.push(goodsCategory);
     Promise.all(promises).then(function(res){
-      console.log(res);
       that.setData({
         swiperUrl: res[0],
         products: res[2],
         hotProducts: res[1].dataArr
       })
     }).catch(function(res){
-      console.log(res);
     });
   },
   data: {
@@ -45,7 +43,6 @@ Page({
   },
   cateTap: function(e) {
     var param = e.currentTarget.dataset.product.category_id;
-    console.log(param);
     app.globalData.categorySelect = param;
     wx.switchTab({
       url: '../category/category'

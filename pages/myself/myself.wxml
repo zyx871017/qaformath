@@ -7,6 +7,10 @@
     <text class="operateText">我的订单</text>
     <image class="navToIcon" src="../common/navTo.png"></image>
   </view>
+  <view class="operateItem" bindtap="navToCollect">
+    <text class="operateText">我的收藏</text>
+    <image class="navToIcon" src="../common/navTo.png"></image>
+  </view>
   <view class="operateItem" bindtap="navToMyTickets">
     <text class="operateText">我的优惠券</text>
     <image class="navToIcon" src="../common/navTo.png"></image>
@@ -17,5 +21,12 @@
   </view>
   <view class="operateItem" bindtap="navToMyTickets">
     <text class="operateText">客服电话</text>
+  </view>
+  <view class="operateItem">
+    <contact-button
+    type="default-dark" 
+    size="80"
+    session-from="weapp"
+    />
   </view>
 </view>

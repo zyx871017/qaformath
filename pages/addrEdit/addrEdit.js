@@ -11,7 +11,6 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log(options.id);
     const addrId = options.id;
     const that = this;
     if(addrId){
@@ -20,7 +19,6 @@ Page({
       });
       app.getRequest(`${common.apiPrefix}/user-address/info/${addrId}`)
         .then(function(res){
-          console.log(res);
           const { province, city, district } = res;
           const region = [province, city, district];
           that.setData({
@@ -80,7 +78,6 @@ Page({
             icon: 'success',
             duration: 1000,
             complete: function() {
-              console.log(111);
               wx.navigateBack({
                 delta: 1
               });
@@ -114,7 +111,6 @@ Page({
             icon: 'success',
             duration: 1000,
             complete: function () {
-              console.log(111);
               wx.navigateBack({
                 delta: 1
               });

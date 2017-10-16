@@ -6,7 +6,6 @@ Page({
 
     var getCategoriesList = app.getRequest(`${common.apiPrefix}/category/get-categories-list`)
     .then(function(res){
-      console.log(res);
       let categorySelect = {};
       if(app.globalData.categorySelect != 0){
         for(let i = 0; i < res.length; i ++){
@@ -19,7 +18,6 @@ Page({
       }
       app.getRequest(`${common.apiPrefix}/category/get-category-detail/${categorySelect.id}`)
       .then(function(resData){
-        console.log(resData);
         that.setData({
           categoryList: res,
           categoryActive: categorySelect,

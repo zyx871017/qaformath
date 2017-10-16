@@ -15,7 +15,7 @@ module.exports.getToken = function() {
   });
 }
 
-module.exports.requestToken = function() {
+module.exports.requestToken = function(cb) {
   const promises = [];
   const getUserInfo = new Promise(function (resolve, reject) {
     wx.getUserInfo({
@@ -66,9 +66,9 @@ module.exports.requestToken = function() {
             key: 'token',
             data: res.data.token,
             success: function(){
-              wx.reLaunch({
-                url: '../index/index',
-              })
+              if(cb){
+                cb();
+              }
             }
           });
           return res.data.token;

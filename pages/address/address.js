@@ -17,7 +17,6 @@ Page({
     const that = this;
     app.getRequest(`${common.apiPrefix}/user-address/2`)
       .then(function(res) {
-        console.log(res);
         that.setData({
           addressList: res
         })
@@ -26,15 +25,16 @@ Page({
 
   deleteAddress: function(e) {
     const id = e.currentTarget.dataset.id;
-    app.getRequest(`${common.apiPrefix}/user-address/delete`,{
-      method: 'DELETE',
-      data: {
-        id,
-        user_id:2
-      }
+    app.getRequest(`${common.apiPrefix}/user-address/delete/${id}`,{
+      method: 'DELETE'
     })
       .then(function(res){
-        console.log(res);
+        if(res.retCode === 0){
+          wx.showModal({
+            title: '删除',
+            content: '删除成功',
+          })
+        }
       })
   },
 
@@ -54,14 +54,11 @@ Page({
   selectTap: function(e) {
     const index = e.currentTarget.dataset.index;
     const addressList = this.data.addressList;
-    console.log(e.currentTarget.dataset.index);
     app.getRequest(`${common.apiPrefix}/user-address/set-default`,
-    {method: 'PATCH', data: {
-      userId: 2,
+    {method: 'POST', data: {
       userAddressId: addressList[index].id
     }})
     .then(function(res){
-      console.log(res);
     });
     for(let i = 0; i < addressList.length; i ++) {
       if(i != index){

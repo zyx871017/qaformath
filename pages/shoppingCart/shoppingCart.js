@@ -52,6 +52,21 @@ Page({
     return totalCount;
   },
 
+  showDeleteModal: function (e) {
+    const id = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: '操作',
+      content: '请选择您的操作',
+      confirmText: '删除',
+      success: function (res) {
+        if (res.confirm) {
+          app.getRequest(`${common.apiPrefix}/shopping/delete/${id}`,{method: 'POST'})
+        } else if (res.cancel) {
+        }
+      }
+    })
+  },
+
   allSelectTap: function () {
     const goodsList = this.data.goodsList;
     const newSelect = !this.data.allSelect;
@@ -119,15 +134,28 @@ Page({
   confirmPay: function () {
     const goodsArray = [];
     const goodsList = this.data.goodsList;
-    for(let i = 0; i < goodsList.length; i ++){
+    for (let i = 0; i < goodsList.length; i++) {
       goodsArray.push({
         goodsId: goodsList[i].goods_id,
         goodsCount: goodsList[i].goods_count
       })
     }
-    const goodsId = this.data.goodsList[0].goods_id;
-    const goodsCount = this.data.goodsList[0].goods_count;
     const addressId = this.data.addressId;
+    if(!addressId){
+      wx.showModal({
+        title: '地址',
+        content: '请编辑您的收货地址',
+        success: function(res) {
+          if(res.confirm){
+            wx.navigateTo({
+              url: '../address/address',
+            })
+          }else{
+            return;
+          }
+        }
+      })
+    }
     const preOrder = app.getRequest(`${common.apiPrefix}/order/submit-order`, {
       method: 'POST',
       data: {
@@ -135,32 +163,45 @@ Page({
         goodsArray,
       }
     })
-    .then(function(res){
-      const timeStamp = Math.floor(new Date().getTime()/1000).toString();
-      const packageStr = `prepay_id=${res.prepayId}`;
-      const nonceStr = res.nonceStr;
-      const paySign = `appId=${res.appId}&nonceStr=${nonceStr}&package=${packageStr}&signType=MD5&timeStamp=${timeStamp}&key=${res.key}`;
-      wx.requestPayment({
-        appId:res.appId,
-        timeStamp: Math.floor(new Date().getTime()/1000).toString(),
-        nonceStr,
-        package: packageStr,
-        signType: 'MD5',
-        paySign: MD5.hexMD5(paySign).toUpperCase(),
-        success:function(res){
-          console.log(res);
-        },
-        fail: function(res){
-          console.log(res);
-        },
-        complete: function(res){
-          console.log(res);
-        }
-      })
-    });
+      .then(function (res) {
+        const timeStamp = Math.floor(new Date().getTime() / 1000).toString();
+        const packageStr = `prepay_id=${res.prepayId}`;
+        const nonceStr = res.nonceStr;
+        const paySign = `appId=${res.appId}&nonceStr=${nonceStr}&package=${packageStr}&signType=MD5&timeStamp=${timeStamp}&key=${res.key}`;
+        wx.requestPayment({
+          appId: res.appId,
+          timeStamp: Math.floor(new Date().getTime() / 1000).toString(),
+          nonceStr,
+          package: packageStr,
+          signType: 'MD5',
+          paySign: MD5.hexMD5(paySign).toUpperCase(),
+          success: function (res) {
+            wx.showModal({
+              title: '支付成功',
+              success: function (res) {
+                wx.navigateTo({
+                  url: '../orders/orders',
+                })
+              }
+            })
+          },
+          fail: function (res) {
+            wx.showModal({
+              title: '支付失败',
+              success: function (res) {
+                wx.navigateTo({
+                  url: '../orders/orders',
+                })
+              }
+            })
+          },
+          complete: function (res) {
+          }
+        })
+      });
   },
 
-  onLoad: function (options) {
+  onShow: function (options) {
     const that = this;
     const promises = [];
     const addrList = app.getRequest(`${common.apiPrefix}/user-address/2`);
@@ -169,7 +210,6 @@ Page({
     promises.push(cartList);
     Promise.all(promises)
       .then(function (res) {
-        console.log(res);
         const addList = res[0];
         let address = '';
         let addressId;
