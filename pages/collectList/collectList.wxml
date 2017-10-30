@@ -1,5 +1,6 @@
 <scroll-view>
   <view class="hotProductsBlock">
+  <view class="noContent" wx:if="{{products.length<=0}}">您还没有添加收藏的商品</view>
     <view 
     class="hotProductsItem" 
     bindtap="productTap" 

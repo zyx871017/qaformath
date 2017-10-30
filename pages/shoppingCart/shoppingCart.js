@@ -7,8 +7,8 @@ Page({
     location: '',
     allSelect: false,
     goodsList: [],
-    totalPrice: 0,
-    totalDiscount: 0,
+    totalPrice: '0.00',
+    totalDiscount: '0.00',
     totalCount: 0,
     addressId: 0
   },
@@ -102,7 +102,7 @@ Page({
 
   countMinus: function (e) {
     const goods_count = e.currentTarget.dataset.item.goods_count;
-    if (goods_count == 0) {
+    if (goods_count == 1) {
       return;
     }
     const listIndex = e.currentTarget.dataset.index;
@@ -204,7 +204,7 @@ Page({
   onShow: function (options) {
     const that = this;
     const promises = [];
-    const addrList = app.getRequest(`${common.apiPrefix}/user-address/2`);
+    const addrList = app.getRequest(`${common.apiPrefix}/user-address`);
     const cartList = app.getRequest(`${common.apiPrefix}/shopping/shopping-car-list`);
     promises.push(addrList);
     promises.push(cartList);

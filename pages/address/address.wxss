@@ -127,3 +127,8 @@ page{
   text-align: center;
   font-size: 30rpx;
 }
+
+.noContent {
+  text-align: center;
+  line-height: 400rpx;
+}

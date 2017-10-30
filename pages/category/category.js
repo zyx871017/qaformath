@@ -7,20 +7,24 @@ Page({
     var getCategoriesList = app.getRequest(`${common.apiPrefix}/category/get-categories-list`)
     .then(function(res){
       let categorySelect = {};
+      let activeIndex = 0;
       if(app.globalData.categorySelect != 0){
         for(let i = 0; i < res.length; i ++){
           if(res[i].id == app.globalData.categorySelect){
             categorySelect = res[i];
+            activeIndex = i;
           }
         }
       }else{
         categorySelect = res[0];
+        activeIndex = 0;
       }
       app.getRequest(`${common.apiPrefix}/category/get-category-detail/${categorySelect.id}`)
       .then(function(resData){
         that.setData({
           categoryList: res,
           categoryActive: categorySelect,
+          activeIndex,
           secCategoryList: resData
         })
       })
@@ -32,7 +36,8 @@ Page({
       for (let i = 0; i < categoryList.length; i++) {
         if (categoryList[i].id == app.globalData.categorySelect) {
           this.setData({
-            categoryActive: categoryList[i]
+            categoryActive: categoryList[i],
+            activeIndex: i
           });
         }
       }
@@ -40,7 +45,10 @@ Page({
   },
   data: {
     categoryList:[],
-    categoryActive: { category_image: '../common/ordersActive.png'},
+    categoryActive: { 
+      category_image: '../common/ordersActive.png',
+    },
+    activeIndex: 0,
     secCategoryList:[]
   },
   categoryTap: function(e) {

@@ -1,6 +1,9 @@
 <view class="categoryContent">
-  <scroll-view class="categoryList" scroll-y="true">
-    <view class="categoryListItem" wx:for="{{categoryList}}" wx:key="id" style="color:{{item==categoryActive?'red':'black'}}"
+  <scroll-view 
+  scroll-top="{{activeIndex*48}}" 
+  class="categoryList" 
+  scroll-y="true">
+    <view class="categoryListItem" wx:for="{{categoryList}}" wx:key="id" style="color:{{item.name==categoryActive.name?'red':'black'}}"
     bindtap="categoryTap" data-category="{{item}}">
       <view class="activeBar" style="background-color:{{item.name==categoryActive.name?'red':'white'}}"></view>
       <text>{{item.name}}</text>

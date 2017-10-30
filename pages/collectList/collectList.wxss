@@ -50,3 +50,8 @@
   margin-top: 65rpx;
   margin-right: 30rpx;
 }
+
+.noContent {
+  text-align: center;
+  line-height: 400rpx;
+}

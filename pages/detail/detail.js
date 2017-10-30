@@ -39,9 +39,24 @@ Page({
   payForIt:function(){
     const id = this.data.goodsDetail.id;
     const goodsArray = [{ goodsId: id, goodsCount:1}];
-    app.getRequest(`${common.apiPrefix}/user-address/2`)
+    app.getRequest(`${common.apiPrefix}/user-address`)
     .then(function(res){
       const addList = res;
+      if(addList.length == 0){
+        wx.showModal({
+          title: '地址',
+          content: '请编辑您的收货地址',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../address/address',
+              })
+            } else {
+              return;
+            }
+          }
+        })
+      }
       let addressId;
       for (let i = 0; i < addList.length; i++) {
         if (addList[i].default) {
@@ -103,8 +118,9 @@ Page({
       }
     })
       .then(function (res) {
+        const title = that.data.goodsDetail.goods_collect?'已取消收藏':'已添加收藏';
         wx.showModal({
-          title: '添加成功',
+          title,
           success: function (res) {
             if (res.confirm) {
               that.setData({

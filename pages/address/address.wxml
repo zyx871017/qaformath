@@ -1,4 +1,5 @@
 <scroll-view class="classname" scroll-y="true">
+  <view class="noContent" wx:if="{{addressList.length<=0}}">您还没有添加收货地址</view>
   <view class="addressItem" wx:for="{{addressList}}" wx:key="id">
     <view class="nameNumber">
       <text class="name">{{item.receiver}}</text>
