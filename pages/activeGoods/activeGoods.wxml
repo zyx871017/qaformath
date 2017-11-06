@@ -1,0 +1,21 @@
+<scroll-view>
+  <view class="banner" indicator-dots="{{true}}" autoplay="{{true}}">
+    <image class="bannerImg" src="{{image_url}}" background-size="cover" mode="scaleToFill"></image>
+  </view>
+  <text class="activeTitle">{{title}}</text>
+  <view class="activeTitle">
+  距离活动{{isBegin?'结束':'开始'}}还有 {{hour}}:{{minute}}:{{second}}
+  </view>
+  <view 
+    class="hotProductsItem" 
+    bindtap="productTap" 
+    data-product="{{item}}" 
+    wx:for="{{goodsList}}" 
+    wx:key="id"
+    >
+      <image class="hotProductsImg" src="{{item.goods_image}}"></image>
+      <text class="hotProductsName">{{item.goods_name}}</text>
+      <text class="hotProductsPrice">¥{{item.goods_price}}</text>
+      <image class="hotAddCart" src="../common/ordersActive.png"></image>
+    </view>
+</scroll-view>
