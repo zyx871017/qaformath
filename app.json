@@ -8,7 +8,8 @@
     "pages/shoppingCart/shoppingCart",
     "pages/address/address",
     "pages/addrEdit/addrEdit",
-    "pages/collectList/collectList"
+    "pages/collectList/collectList",
+    "pages/activeGoods/activeGoods"
   ],
   "window": {
     "backgroundTextStyle": "light",

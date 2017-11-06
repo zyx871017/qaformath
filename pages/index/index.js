@@ -3,7 +3,7 @@
 var common = require('./../common/config/common.js');
 var app = getApp();
 Page({
-  onLoad: function() {
+  onLoad: function () {
     var that = this
     //调用应用实例的方法获取全局数据
     var promises = [];
@@ -13,13 +13,13 @@ Page({
     promises.push(hotBanners);
     promises.push(saleList);
     promises.push(goodsCategory);
-    Promise.all(promises).then(function(res){
+    Promise.all(promises).then(function (res) {
       that.setData({
         swiperUrl: res[0],
         products: res[2],
         hotProducts: res[1].dataArr
       })
-    }).catch(function(res){
+    }).catch(function (res) {
     });
   },
   data: {
@@ -30,22 +30,29 @@ Page({
     hotProducts: []
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  productTap: function(e) {
+  productTap: function (e) {
     var param = e.currentTarget.dataset.product.id;
     wx.navigateTo({
       url: '../detail/detail?productId=' + param
     })
   },
-  cateTap: function(e) {
+  cateTap: function (e) {
     var param = e.currentTarget.dataset.product.category_id;
     app.globalData.categorySelect = param;
     wx.switchTab({
       url: '../category/category'
+    })
+  },
+  activeTap: function (e) {
+    var param = e.currentTarget.dataset.product.id;
+    app.globalData.activeId = param;
+    wx.navigateTo({
+      url: '../activeGoods/activeGoods?activeId=' + param
     })
   }
 })

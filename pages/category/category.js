@@ -54,6 +54,7 @@ Page({
   categoryTap: function(e) {
     var that = this;
     var cateId = e.currentTarget.dataset.category.id;
+    app.globalData.categorySelect = cateId;
     app.getRequest(`${common.apiPrefix}/category/get-category-detail/${cateId}`)
     .then(function(res){
       that.setData({ 

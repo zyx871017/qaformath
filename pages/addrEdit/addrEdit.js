@@ -56,6 +56,16 @@ Page({
 
   saveAddress: function(e) {
     const { name, number, detail, region, addrId, isDefault } = this.data;
+    if(!number){
+      wx.showToast({
+        title: '请输入电话',
+        icon: 'success',
+        duration: 1000,
+        complete: function () {
+        }
+      })
+      return;
+    }
     if(this.data.add){
       app.getRequest(`${common.apiPrefix}/user-address/add`,{
         method: 'POST',

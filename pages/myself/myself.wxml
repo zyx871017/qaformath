@@ -22,11 +22,9 @@
   <view class="operateItem" bindtap="navToMyTickets">
     <text class="operateText">客服电话</text>
   </view>
-  <view class="operateItem">
-    <contact-button
-    type="default-dark" 
-    size="80"
-    session-from="weapp"
-    />
-  </view>
+  <button 
+  class="contextButton" 
+  open-type='contact'
+  type='primary'
+  >联系客服</button>
 </view>

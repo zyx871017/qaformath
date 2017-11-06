@@ -60,7 +60,7 @@ Page({
       confirmText: '删除',
       success: function (res) {
         if (res.confirm) {
-          app.getRequest(`${common.apiPrefix}/shopping/delete/${id}`,{method: 'POST'})
+          app.getRequest(`${common.apiPrefix}/shopping/delete/${id}`, { method: 'POST' })
         } else if (res.cancel) {
         }
       }
@@ -134,23 +134,28 @@ Page({
   confirmPay: function () {
     const goodsArray = [];
     const goodsList = this.data.goodsList;
+    if (goodsList.length == 0) {
+      return;
+    }
     for (let i = 0; i < goodsList.length; i++) {
-      goodsArray.push({
-        goodsId: goodsList[i].goods_id,
-        goodsCount: goodsList[i].goods_count
-      })
+      if (goodsList[i].select) {
+        goodsArray.push({
+          goodsId: goodsList[i].goods_id,
+          goodsCount: goodsList[i].goods_count
+        })
+      }
     }
     const addressId = this.data.addressId;
-    if(!addressId){
+    if (!addressId) {
       wx.showModal({
         title: '地址',
         content: '请编辑您的收货地址',
-        success: function(res) {
-          if(res.confirm){
+        success: function (res) {
+          if (res.confirm) {
             wx.navigateTo({
               url: '../address/address',
             })
-          }else{
+          } else {
             return;
           }
         }
@@ -222,10 +227,14 @@ Page({
             addressId = addList[i].id;
           }
         }
+        const goodsList = res[1].dataArr;
         that.setData({
           goodsList: res[1].dataArr,
           location: address,
-          addressId
+          addressId,
+          totalPrice: that.totalPrice(goodsList),
+          totalDiscount: that.totalDiscount(goodsList),
+          totalCount: that.totalCount(goodsList)
         })
       })
   },

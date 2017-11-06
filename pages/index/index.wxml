@@ -1,7 +1,7 @@
 <scroll-view>
   <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" >
     <block wx:for="{{swiperUrl}}" wx:key="id">
-      <swiper-item data-product="{{item}}" bindtap="cateTap">
+      <swiper-item data-product="{{item}}" bindtap="activeTap">
         <image class="bannerImg" src="{{item.goods_image}}" background-size="cover" mode="scaleToFill"></image>
       </swiper-item>
     </block>  
