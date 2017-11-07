@@ -14,9 +14,39 @@ Page({
     promises.push(saleList);
     promises.push(goodsCategory);
     Promise.all(promises).then(function (res) {
+      var activeId = 0;
+      console.log(res[0]);
+      if(res[0][0]){
+        activeId = res[0][0].id;
+      }
       that.setData({
         swiperUrl: res[0],
-        products: res[2],
+        products: [
+          {
+            url:'../collectList/collectList',
+            name: '我的收藏',
+            icon: './../common/collect.png',
+            back: '#f052af'
+          },
+          {
+            url: '../orders/orders',
+            name: '我的订单',
+            icon: './../common/order.png',
+            back: '#3abeff'
+          },
+          {
+            url: '../address/address',
+            name: '地址管理',
+            icon: './../common/address.png',
+            back: '#4cd7c0'
+          },
+          {
+            url: `../activeGoods/activeGoods?activeId=${activeId}`,
+            name: '热门活动',
+            icon: './../common/active.png',
+            back: '#2564c1'
+          }
+        ],
         hotProducts: res[1].dataArr
       })
     }).catch(function (res) {
@@ -42,10 +72,9 @@ Page({
     })
   },
   cateTap: function (e) {
-    var param = e.currentTarget.dataset.product.category_id;
-    app.globalData.categorySelect = param;
-    wx.switchTab({
-      url: '../category/category'
+    var param = e.currentTarget.dataset.product.url;
+    wx.navigateTo({
+      url:param
     })
   },
   activeTap: function (e) {
