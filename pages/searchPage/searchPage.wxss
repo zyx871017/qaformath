@@ -1,18 +1,47 @@
-/* pages/activeGoods/activeGoods.wxss */
-.banner {
-  height: 240rpx;
+/* pages/searchPage/searchPage.wxss */
+.searchContent {
+  height: 76rpx;
   width: 100%;
+  background-color: #f7f7f7;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 99;
 }
 
-.bannerImg {
-  height: 240rpx;
-  width: 100%;
+.searchInput {
+  border: 1rpx solid #f0f0f0;
+  height: 50rpx;
+  width: 720rpx;
+  margin: 10rpx auto;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 3rpx;
+  font-size: 26rpx;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  line-height: 50rpx;
+  display: block;
+}
+
+.searchInput icon{
+  float: left;
+  margin: 11rpx 10rpx 11rpx 260rpx;
+}
+
+.searchInput text {
+  font-size: 26rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+  display: block;
+  float: left;
+  color: #aaa;
 }
 
 .hotProductsBlock {
-  height: 375rpx;
+  height: 100%;
   width: 100%;
-  padding: 15rpx 32rpx;
+  padding: 91rpx 32rpx 15rpx;
   box-sizing: border-box;
 }
 
@@ -63,10 +92,4 @@
   float: right;
   margin-top: 35rpx;
   margin-right: 15rpx;
-}
-
-.activeTitle {
-  padding: 10rpx;
-  box-sizing: border-box;
-  display: block;
 }

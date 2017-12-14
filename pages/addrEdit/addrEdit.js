@@ -66,6 +66,24 @@ Page({
       })
       return;
     }
+    if(!detail){
+      wx.showToast({
+        title: '请输入详细地址',
+        duration: 1000,
+        complete: function () {
+        }
+      })
+      return;
+    }
+    if (!name) {
+      wx.showToast({
+        title: '请输入收货人姓名',
+        duration: 1000,
+        complete: function () {
+        }
+      })
+      return;
+    }
     if(this.data.add){
       app.getRequest(`${common.apiPrefix}/user-address/add`,{
         method: 'POST',

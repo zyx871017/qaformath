@@ -14,12 +14,18 @@
       <text class="productText">{{item.name}}</text>
     </view>
   </view>
+  <view class="searchContent">
+    <view class="searchInput" bindtap='openSearch'>
+      <icon size="14" type="search"></icon>
+      <text>搜索您喜欢的好物</text>
+    </view>
+  </view>
   <view class="hotBlank">热卖产品
     <view class="arrow"></view>
   </view>
   <view class="hotProductsBlock">
     <view class="hotProductsItem" bindtap="productTap" data-product="{{item}}" wx:for="{{hotProducts}}" wx:key="id">
-      <image class="hotProductsImg" src="{{item.goods_image}}"></image>
+      <image class="hotProductsImg" src="{{item.goods_small_image}}"></image>
       <text class="hotProductsName">{{item.goods_name}}</text>
       <text class="hotProductsPrice">¥{{item.goods_price}}</text>
       <image class="hotAddCart" src="../common/ordersActive.png"></image>

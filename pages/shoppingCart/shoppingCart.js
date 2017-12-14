@@ -132,9 +132,14 @@ Page({
   },
 
   confirmPay: function () {
+    wx.showLoading({
+      title: '正在准备支付...',
+      mask: true
+    })
     const goodsArray = [];
     const goodsList = this.data.goodsList;
     if (goodsList.length == 0) {
+      wx.hideLoading();
       return;
     }
     for (let i = 0; i < goodsList.length; i++) {
@@ -145,8 +150,13 @@ Page({
         })
       }
     }
+    if(goodsArray.length == 0){
+      wx.hideLoading();
+      return;
+    }
     const addressId = this.data.addressId;
     if (!addressId) {
+      wx.hideLoading();
       wx.showModal({
         title: '地址',
         content: '请编辑您的收货地址',
@@ -169,6 +179,13 @@ Page({
       }
     })
       .then(function (res) {
+        if(res.retCode === -6 || res.retCode === -7){
+          wx.hideLoading();
+          wx.showModal({
+            title: '暂时没有库存了！'
+          });
+          return;
+        }
         const timeStamp = Math.floor(new Date().getTime() / 1000).toString();
         const packageStr = `prepay_id=${res.prepayId}`;
         const nonceStr = res.nonceStr;
@@ -181,6 +198,7 @@ Page({
           signType: 'MD5',
           paySign: MD5.hexMD5(paySign).toUpperCase(),
           success: function (res) {
+            wx.hideLoading();
             wx.showModal({
               title: '支付成功',
               success: function (res) {
@@ -191,6 +209,7 @@ Page({
             })
           },
           fail: function (res) {
+            wx.hideLoading();
             wx.showModal({
               title: '支付失败',
               success: function (res) {

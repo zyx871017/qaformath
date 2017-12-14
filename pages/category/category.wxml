@@ -11,10 +11,49 @@
   </scroll-view>
   <scroll-view class="categoryDetail" scroll-y="{{true}}">
     <image class="categoryImg" src="{{categoryActive.category_image}}"></image>
-    <text class="categoryName">{{categoryActive.name}}</text>
-    <view class="secCategoryItem" wx:for="{{secCategoryList}}" wx:key="goods_name" data-id="{{item.id}}" bindtap="goodTap">
-      <image class="secCategoryImg" src="{{item.goods_image}}"></image>
+    <view class="sortContent">
+      <text 
+      class="oriSort" 
+      data-sortby="ori"
+      style="color:{{sortBy=='ori'?'red':'black'}}"
+      bindtap="sortBy"
+      >综合排序</text>
+      <view 
+      class="sortItem" 
+      data-sortby="pri"
+      style="color:{{sortBy=='pri'?'red':'black'}}"
+      bindtap="sortBy"
+      >
+        <text>按价格</text>
+        <view class="sortUp"></view>
+        <view class="sortDown"></view>
+      </view>
+      <view 
+      class="sortItem" 
+      data-sortby="sale"
+      style="color:{{sortBy=='sale'?'red':'black'}}"
+      bindtap="sortBy"
+      >
+        <text>按销量</text>
+        <view class="sortUp"></view>
+        <view class="sortDown"></view>
+      </view>
+    </view>
+    <view class="secCategoryItem" wx:for="{{orderedList}}" wx:key="goods_name" data-id="{{item.id}}" bindtap="goodTap">
+      <image class="secCategoryImg" src="{{item.goods_small_image}}"></image>
+      <view class="secCategoryDesCon">
       <text class="secCategoryName">{{item.goods_name}}</text>
+      <view class="secCategoryBottom">
+        <text class="secCategoryPrice">
+        ¥{{item.goods_price}}
+        </text>
+        <view 
+        class="secCategoryAdd" 
+        catch:tap="addToShoppingCart"
+        data-id="{{item.id}}"
+        >+</view>
+      </view>
+      </view>
     </view>
   </scroll-view>
 </view>

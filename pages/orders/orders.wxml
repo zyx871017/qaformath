@@ -32,12 +32,12 @@
       data-id="{{item.id}}"
       wx:if="{{item.status == 2}}"
       >确认收货</text>
-      <text
+      <!-- <text
       class="ordersButton"
       bindtap="submitPay"
       data-id="{{item.id}}"
       wx:if="{{item.status == 7}}"
-      >再来一单</text>
+      >再来一单</text> -->
       <text
       class="ordersButton second"
       bindtap="cancelOrder"

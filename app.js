@@ -57,6 +57,17 @@ App({
                 url: '../index/index'
               })
             });
+          }else if(res.data.retCode === -6){
+            wx.hideLoading();
+              wx.showModal({
+                title: '',
+                content: '货物卖光啦！',
+              })
+          }else if(res.data.retCode === -21){
+              wx.showModal({
+                title: '',
+                content: '您已经购买过热卖产品了，每人仅能购买一件热卖产品',
+              })
           } else {
             reject(res.data);
           }

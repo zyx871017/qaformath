@@ -1,18 +1,7 @@
-/* pages/activeGoods/activeGoods.wxss */
-.banner {
-  height: 240rpx;
-  width: 100%;
-}
-
-.bannerImg {
-  height: 240rpx;
-  width: 100%;
-}
-
 .hotProductsBlock {
-  height: 375rpx;
+  height: 100%;
   width: 100%;
-  padding: 15rpx 32rpx;
+  padding: 15rpx 32rpx 15rpx;
   box-sizing: border-box;
 }
 
@@ -63,10 +52,4 @@
   float: right;
   margin-top: 35rpx;
   margin-right: 15rpx;
-}
-
-.activeTitle {
-  padding: 10rpx;
-  box-sizing: border-box;
-  display: block;
 }

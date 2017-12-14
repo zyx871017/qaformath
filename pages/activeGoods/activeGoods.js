@@ -14,9 +14,11 @@ Page({
     var activeId = options.activeId;
     var getCategoriesList = app.getRequest(`${common.apiPrefix}/active/info/${activeId}`)
       .then(function (res) {
-        setInterval(function(){
-          var start_time = new Date(res.start_time).getTime();
-          var end_time = new Date(res.end_time).getTime();
+        setInterval(function () {
+          var preStartTime = res.start_time.replace(/-/g, '/');
+          var preEndTime = res.end_time.replace(/-/g, '/');
+          var start_time = new Date(preStartTime).getTime();
+          var end_time = new Date(preEndTime).getTime();
           var now_time = new Date().getTime();
           var isBegin = false;
           var isOver = false;
@@ -48,8 +50,8 @@ Page({
             minute,
             second
           })
-        },100);
-        
+        }, 100);
+
 
         that.setData({
           image_url: res.image_url,

@@ -19,7 +19,7 @@
     <text class="operateText">地址管理</text>
     <image class="navToIcon" src="../common/navTo.png"></image>
   </view>
-  <view class="operateItem" bindtap="navToMyTickets">
+  <view class="operateItem" bindtap="makePhoneCall">
     <text class="operateText">客服电话</text>
   </view>
   <button 

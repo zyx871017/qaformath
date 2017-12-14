@@ -9,7 +9,9 @@
     "pages/address/address",
     "pages/addrEdit/addrEdit",
     "pages/collectList/collectList",
-    "pages/activeGoods/activeGoods"
+    "pages/activeGoods/activeGoods",
+    "pages/searchPage/searchPage",
+    "pages/hotGoods/hotGoods"
   ],
   "window": {
     "backgroundTextStyle": "light",

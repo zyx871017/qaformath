@@ -1,27 +1,29 @@
 .hotProductsBlock {
-  height:375rpx;
+  height: 375rpx;
   width: 100%;
-  padding: 15rpx 19rpx;
+  padding: 15rpx 32rpx;
+  box-sizing: border-box;
 }
 
 .hotProductsItem {
-  height: 542rpx;
-  width: 330rpx;
+  height: 482rpx;
+  width: 300rpx;
   float: left;
   box-sizing: border-box;
   border: 1rpx solid #eee;
-  margin: 15rpx 12rpx;
+  margin: 15rpx 20rpx;
 }
 
 .hotProductsImg {
-  width:326rpx;
-  height:326rpx;
+  width: 296rpx;
+  height: 247rpx;
+  margin: 25rpx 0;
 }
 
 .hotProductsName {
   display: block;
-  width: 326rpx;
-  padding: 0 24rpx;
+  width: 296rpx;
+  padding: 0 12rpx;
   box-sizing: border-box;
   font-size: 28rpx;
   line-height: 34rpx;
@@ -30,14 +32,15 @@
   overflow: hidden;
   height: 68rpx;
 }
+
 .hotProductsPrice {
   text-align: left;
   font-size: 24rpx;
-  width:200rpx;
+  width: 200rpx;
   display: block;
-  padding: 0 24rpx;
+  padding: 0 12rpx;
   box-sizing: border-box;
-  margin-top: 72rpx;
+  margin-top: 35rpx;
   font-weight: 900;
   float: left;
 }
@@ -47,8 +50,8 @@
   width: 30rpx;
   height: 30rpx;
   float: right;
-  margin-top: 65rpx;
-  margin-right: 30rpx;
+  margin-top: 35rpx;
+  margin-right: 15rpx;
 }
 
 .noContent {

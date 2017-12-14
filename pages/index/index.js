@@ -16,14 +16,20 @@ Page({
     Promise.all(promises).then(function (res) {
       var activeId = 0;
       console.log(res[0]);
-      if(res[0][0]){
+      if (res[0][0]) {
         activeId = res[0][0].id;
       }
       that.setData({
         swiperUrl: res[0],
         products: [
           {
-            url:'../collectList/collectList',
+            url: `../hotGoods/hotGoods`,
+            name: '热卖商品',
+            icon: './../common/active.png',
+            back: '#2564c1'
+          },
+          {
+            url: '../collectList/collectList',
             name: '我的收藏',
             icon: './../common/collect.png',
             back: '#f052af'
@@ -39,12 +45,6 @@ Page({
             name: '地址管理',
             icon: './../common/address.png',
             back: '#4cd7c0'
-          },
-          {
-            url: `../activeGoods/activeGoods?activeId=${activeId}`,
-            name: '热门活动',
-            icon: './../common/active.png',
-            back: '#2564c1'
           }
         ],
         hotProducts: res[1].dataArr
@@ -74,7 +74,7 @@ Page({
   cateTap: function (e) {
     var param = e.currentTarget.dataset.product.url;
     wx.navigateTo({
-      url:param
+      url: param
     })
   },
   activeTap: function (e) {
@@ -82,6 +82,11 @@ Page({
     app.globalData.activeId = param;
     wx.navigateTo({
       url: '../activeGoods/activeGoods?activeId=' + param
+    })
+  },
+  openSearch: function () {
+    wx.navigateTo({
+      url: '../searchPage/searchPage'
     })
   }
 })

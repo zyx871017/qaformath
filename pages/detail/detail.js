@@ -37,12 +37,17 @@ Page({
     });
   },
   payForIt:function(){
+    wx.showLoading({
+      title: '正在准备支付...',
+      mask: true
+    })
     const id = this.data.goodsDetail.id;
     const goodsArray = [{ goodsId: id, goodsCount:1}];
     app.getRequest(`${common.apiPrefix}/user-address`)
     .then(function(res){
       const addList = res;
       if(addList.length == 0){
+        wx.hideLoading();
         wx.showModal({
           title: '地址',
           content: '请编辑您的收货地址',
@@ -71,6 +76,9 @@ Page({
         }
       })
         .then(function (res) {
+          if(res.retCode !== 0){
+            wx.hideLoading();
+          }
           const timeStamp = Math.floor(new Date().getTime() / 1000).toString();
           const packageStr = `prepay_id=${res.prepayId}`;
           const nonceStr = res.nonceStr;
@@ -83,6 +91,7 @@ Page({
             signType: 'MD5',
             paySign: MD5.hexMD5(paySign).toUpperCase(),
             success: function (res) {
+              wx.hideLoading();
               wx.showModal({
                 title: '支付成功',
                 success: function (res) {
@@ -93,6 +102,7 @@ Page({
               })
             },
             fail: function (res) {
+              wx.hideLoading();
               wx.showModal({
                 title: '支付失败',
                 success: function (res) {

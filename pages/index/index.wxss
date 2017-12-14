@@ -1,4 +1,37 @@
 /**index.wxss**/
+
+.searchContent {
+  height: 74rpx;
+  width: 100%;
+  background-color: #f7f7f7;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.searchInput {
+  border: 1rpx solid #f0f0f0;
+  height: 50rpx;
+  width: 720rpx;
+  margin: 10rpx auto;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 3rpx;
+}
+
+.searchInput icon{
+  float: left;
+  margin: 11rpx 10rpx 11rpx 260rpx;
+}
+
+.searchInput text {
+  font-size: 26rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+  display: block;
+  float: left;
+  color: #aaa;
+}
+
 .banner {
   height: 240rpx;
   width: 100%;
@@ -10,8 +43,8 @@
 }
 
 .productItem {
-  width:170rpx;
-  height:222rpx;
+  width: 170rpx;
+  height: 222rpx;
   float: left;
   margin: 5rpx;
   box-sizing: border-box;
@@ -32,14 +65,14 @@
   margin-top: 20rpx;
 }
 
-.products{
+.products {
   margin-top: 2rpx;
   display: block;
-  height:230rpx;
-  padding: 0 8px
+  height: 230rpx;
+  padding: 0 8px;
 }
 
-.hotBlank{
+.hotBlank {
   background-color: #f3ead9;
   width: 100%;
   height: 100rpx;
@@ -50,7 +83,7 @@
 
 .arrow {
   width: 0rpx;
-  height:0rpx;
+  height: 0rpx;
   box-sizing: content-box;
   border-width: 20rpx;
   border-color: #f3ead9 transparent transparent transparent;
@@ -63,30 +96,31 @@
 }
 
 .hotProductsBlock {
-  height:375rpx;
+  height: 375rpx;
   width: 100%;
-  padding: 15rpx 19rpx;
+  padding: 15rpx 32rpx;
+  box-sizing: border-box;
 }
 
 .hotProductsItem {
-  height: 542rpx;
-  width: 330rpx;
+  height: 482rpx;
+  width: 300rpx;
   float: left;
   box-sizing: border-box;
   border: 1rpx solid #eee;
-  margin: 15rpx 12rpx;
+  margin: 15rpx 20rpx;
 }
 
 .hotProductsImg {
-  width:326rpx;
-  height:275rpx;
-  margin:25rpx 0;
+  width: 296rpx;
+  height: 247rpx;
+  margin: 25rpx 0;
 }
 
 .hotProductsName {
   display: block;
-  width: 326rpx;
-  padding: 0 24rpx;
+  width: 296rpx;
+  padding: 0 12rpx;
   box-sizing: border-box;
   font-size: 28rpx;
   line-height: 34rpx;
@@ -95,14 +129,15 @@
   overflow: hidden;
   height: 68rpx;
 }
+
 .hotProductsPrice {
   text-align: left;
   font-size: 24rpx;
-  width:200rpx;
+  width: 200rpx;
   display: block;
-  padding: 0 24rpx;
+  padding: 0 12rpx;
   box-sizing: border-box;
-  margin-top: 72rpx;
+  margin-top: 35rpx;
   font-weight: 900;
   float: left;
 }
@@ -112,8 +147,8 @@
   width: 30rpx;
   height: 30rpx;
   float: right;
-  margin-top: 65rpx;
-  margin-right: 30rpx;
+  margin-top: 35rpx;
+  margin-right: 15rpx;
 }
 
 .IconContent {
